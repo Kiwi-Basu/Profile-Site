@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      let text = "@kiwibasu";
+      let index = 0;
+      let deleting = false;
+
+      function updateTitle() {
+        if (!deleting && index <= text.length) {
+          document.title = text.slice(0, index++);
+        } else if (deleting && index >= 0) {
+          document.title = text.slice(0, index--);
+        }
+
+        if (index > text.length) {
+          deleting = true;
+          setTimeout(updateTitle, 500); // pause before deleting
+          return;
+        }
+
+        if (index < 0) {
+          deleting = false;
+          index = 0;
+          setTimeout(updateTitle, 500); // pause before typing again
+          return;
+        }
+
+        setTimeout(updateTitle, 150); // typing speed
+      }
+
+      updateTitle();
+
+    </script>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

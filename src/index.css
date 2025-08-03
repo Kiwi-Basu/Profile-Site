@@ -1,0 +1,24 @@
+/* "Hello World"(print) */
+@import "tailwindcss";
+
+body{
+  background-color: #111;
+}
+
+@keyframes rotate-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes rotate-slower {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+.animate-rotate-slow {
+  animation: rotate-slow 20s linear infinite;
+}
+
+.animate-rotate-slower {
+  animation: rotate-slower 30s linear infinite;
+}
