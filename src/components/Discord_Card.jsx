@@ -124,7 +124,7 @@ const Discord_Card = () => {
 </button>
       </div>
           {playLofi && (
-  <audio src="Lofi.mp3" autoPlay loop hidden />
+  <audio src="src\assets\Lofi.mp3" autoPlay loop hidden />
 )}
 
     </div>
