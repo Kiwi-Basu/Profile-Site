@@ -78,7 +78,7 @@ const Skills_card = () => {
         </div>
       </div>
       <div className="mr-30">
-        <img src="public/luffy_hi.gif" height="300" width="300" alt="" />
+        <img src="/luffy_hi.gif" height="300" width="300" alt="" />
       </div>
     </div>
 
