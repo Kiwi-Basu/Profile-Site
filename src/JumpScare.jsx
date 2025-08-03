@@ -55,7 +55,7 @@ const JumpScare = () => {
     <div>
       <video className="h-screen w-screen fixed z-30 inset-0"
         ref={videoRef}
-        src={import.meta.env.VITE_VIDEO}
+        src="jumpscare.mp4"
                 loop
         autoPlay
         playsInline
