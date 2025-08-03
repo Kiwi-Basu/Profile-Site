@@ -27,6 +27,5 @@ dist-ssr
 .env
 node_modules
 *.log
-jumpscare.mp4
-Lofi.mp3
+
 README.md 
