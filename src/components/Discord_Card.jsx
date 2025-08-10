@@ -97,8 +97,8 @@ const Discord_Card = () => {
   }, [])
 
   return (
-    <div className="bg-cover bg-center h-[581px] w-[351px] rounded-2xl drop-shadow-[0_0_3px_#afa9dd]" style={{ backgroundImage: `url(${bg})`}}>
-      <div className="h-[580px] w-[350px] backdrop-blur-[1px]  border-2 rounded-2xl p-2 border-[rgba(78,226,176,0.4)] ">
+    <div className="bg-cover bg-center h-[580px] w-[350px] rounded-2xl drop-shadow-[0_0_3px_#afa9dd] relative" style={{ backgroundImage: `url(${bg})`}}>
+      <div className="h-[580px] w-[350px] backdrop-blur-[1px] border-2 rounded-2xl p-2 border-[rgba(78,226,176,0.4)] bg-[rgba(255,255,255,0.11)] relative z-10">
         {/* Header */}
         <div className="h-[150px] w-full my-1 flex items-center">
           <div>
