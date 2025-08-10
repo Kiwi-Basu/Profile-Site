@@ -1,132 +1,211 @@
-// "Hello World"(print)
+import React, { useEffect, useState } from 'react'
 
-import React, { useState } from 'react'
+import idle from '../assets/idle.svg'
+import online from '../assets/online.svg'
+import dnd from '../assets/dnd.svg'
+import invisible from '../assets/invisible.svg'
+import youtube from '../assets/youtube.svg'
+import bg from '/discord_card_bg.png'
 
 const Discord_Card = () => {
-  const [profile_Picture, setProfile_Picture] = useState();
-  const [discord_Name, setDiscord_Name] = useState();
-  const [discord_Status_Custom, setDiscord_Status_Custom] = useState();
-  const [discord_Username, setDiscord_Username] = useState();
-  const [discord_Activity, setDiscord_Activity] = useState();
-  const [discordSpoitfy, setDiscordSpoitfy] = useState();
-  const [discord_Status_Active, setDiscord_Status_Active] = useState();
-  const [playLofi, setPlayLofi] = useState(false);
-  async function updateStatus(){
-    const res = await fetch(`https://api.lanyard.rest/v1/users/${import.meta.env.VITE_DISCORD_ID}`)
-    const json = await res.json();
+  const [profile_Picture, setProfile_Picture] = useState()
+  const [discord_Name, setDiscord_Name] = useState()
+  const [discord_Status_Custom, setDiscord_Status_Custom] = useState()
+  const [discord_Username, setDiscord_Username] = useState()
+  const [discord_Activity, setDiscord_Activity] = useState()
+  const [discordSpotify, setDiscordSpotify] = useState()
+  const [discord_Status_Active, setDiscord_Status_Active] = useState()
+  // const [playLofi, setPlayLofi] = useState(false)
+  const [discordYouTube, setDiscordYouTube] = useState(null)
 
-    const data = json.data;
-    const user = data.discord_user;
-    
+  async function updateStatus() {
+    const res = await fetch(
+      `https://api.lanyard.rest/v1/users/${import.meta.env.VITE_DISCORD_ID}`
+    )
+    const json = await res.json()
+    const data = json.data
+    const user = data.discord_user
 
-    
-    //Profile picture
-    const profile_pic = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`;
+    // Profile picture
+    const profile_pic = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`
     setProfile_Picture(profile_pic)
 
-    //active status
-
+    // Active status
     const statusText = {
-      online: "🟢",
-      idle: "🌙",
-      dnd: "⛔",
-      offline: "⚫"
-    };
-    const discord_Active_Status =data.discord_status
-    setDiscord_Status_Active(`${statusText[discord_Active_Status]}`)
+      online: online,
+      idle: idle,     
+      dnd: dnd,
+      offline: invisible
+    }
+    setDiscord_Status_Active({
+  icon: statusText[data.discord_status],
+  name: data.discord_status,
+})
 
+    // Name, Username, Custom Status
+    setDiscord_Name(user.global_name)
+    setDiscord_Username(user.username)
 
-    // Name
-    const name_discord = `${user.global_name}`
-    setDiscord_Name(name_discord)
+    const custom = data.activities.find((activity) => activity.type === 4)
+    setDiscord_Status_Custom(custom?.state)
 
-    //status
-    const custom = data.activities.find(activity => activity.type == 4);
-    const discord_Status =custom?.state;
-    setDiscord_Status_Custom(discord_Status);
-
-    //username
-    const username_discord = `${user.username}`;
-    setDiscord_Username(username_discord)
-
-    //Activity
-    let activity_discord = data.activities.find(activity =>activity.type == 0)
-    setDiscord_Activity(` ${activity_discord? `🎮 ${activity_discord.name}`:""}`)
-    
-    //spotify
-    if (data.listening_to_spotify && data.spotify) {
-        const s = data.spotify;
-        setDiscordSpoitfy(`${s.song?`🎵 ${s.song}`:""}`);
+    // Game / App Activity
+    const activity = data.activities.find((a) => a.type === 0)
+    if (activity) {
+      setDiscord_Activity({
+        name: activity.name,
+        details: activity.details || null,
+        state: activity.state || null,
+        largeText: activity.assets?.large_text || null,
+        image: activity.assets?.small_image
+          ? `https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets.small_image}.png`
+          : null,
+        startTime: activity.timestamps?.start || null
+      })
+    } else {
+      setDiscord_Activity(null)
     }
 
+    // Spotify
+    if (data.listening_to_spotify && data.spotify) {
+      const s = data.spotify
+      setDiscordSpotify({
+        song: s.song,
+        artist: s.artist,
+        album: s.album,
+        image: s.album_art_url
+      })
+    } else {
+      setDiscordSpotify(null)
+    }
 
+    // YouTube Activity
+    const youtubeActivity = data.activities.find((a) => a.name === "YouTube")
+    if (youtubeActivity) {
+
+      setDiscordYouTube({
+        title: youtubeActivity.details || "Unknown Title",
+        channel: youtubeActivity.state || "Browsing Youtube",
+      })
+    } else {
+      setDiscordYouTube(null)
+    }
   }
-  updateStatus()
+
+  useEffect(() => {
+    updateStatus()
+  }, [])
+
   return (
-    <div style={{ backgroundImage: `url(${'/discord_card_bg.gif'})`,backgroundSize:'cover',backgroundPosition:"center",borderColor: 'rgba(163,163,163,0.475)'}}
-    className=' h-[500px] w-[350px]  backdrop-blur-2xl border rounded-2xl p-5 flex flex-col items-center '>
-      
-      <div className="relative h-[125px] w-[125px] mt-5">
-        
-        <img
-          src={profile_Picture}
-          alt="Avatar"
-          className="rounded-full border-2  p-1 h-[125px] w-[125px]"
-          draggable="false"
-          style={{ borderColor: 'rgba(50,46,46,0.475)' }}
-          />
+    <div className="bg-cover bg-center h-[581px] w-[351px] rounded-2xl drop-shadow-[0_0_3px_#afa9dd]" style={{ backgroundImage: `url(${bg})`}}>
+      <div className="h-[580px] w-[350px] backdrop-blur-[1px]  border-2 rounded-2xl p-2 border-[rgba(78,226,176,0.4)] ">
+        {/* Header */}
+        <div className="h-[150px] w-full my-1 flex items-center">
           <div>
-            <span
-              className="absolute bottom-1.5 right-1.5 flex items-center justify-center h-5 w-5 text-xs rounded-full border-2"
-              style={{borderColor: 'rgba(50,46,46,0.475)',}}
-            >
-              {discord_Status_Active}
-            </span>
-          </div>
-          {discord_Status_Custom && (
-            <div className="absolute top-1 -right-10 bg-neutral-500 text-white text-sm px-3 py-1 rounded-xl shadow-lg after:content-[''] after:absolute after:bottom-[-13px] after:left-4 after:border-8 after:border-transparent after:border-t-neutral-500">
-              {discord_Status_Custom}
+            <div className="relative h-[125px] w-[125px] ml-1">
+              <img
+                src={profile_Picture}
+                alt="Avatar"
+                className="rounded-full p-0.5 border-2 border-[#7d8187] h-[125px] w-[125px]"
+                draggable="false"
+              />
+      
             </div>
-          )} 
-
-      </div>
-
-      <p className='font-bold text-2xl mt-2 mb-5 text-white'>{discord_Name}</p>
-      <p>{discord_Status_Custom}</p>
-
-      <div
-        style={{ borderColor: 'rgba(255, 255, 255, 0.2)' }}
-        className='border flex py-2 px-2 rounded-2xl backdrop-blur-[10px] shadow-[inset_10px_10px_20px_rgba(225,225,225,0.2)] transition-transform duration-300 ease-in-out hover:scale-105'
-      >
-
-        <img src={profile_Picture} draggable="false" alt="" className=' border-1 p-0.5 rounded-full h-[115px] w-[115px] mr-2'
-        style={{borderColor:'rgba(255, 255, 255, 0.2)'}} />
-        <div>
-
-          <div className='mx-2 mt-2 text-purple-400 text-shadow-blue-700 text-shadow-md'>
-            <span className='mb-1'>{discord_Name}</span>
-            <span className='block'>{discord_Username}</span>
           </div>
-          <div className='ml-2 mt-2  text-shadow-md'>
-            <p className='text-blue-400 text-shadow-emerald-700 text-shadow-md'>{discord_Activity}</p>
-            <p className='text-green-400 text-shadow-blue-300 text-shadow-md'>{discordSpoitfy?.slice(0,20)}</p>
+          <div className="h-full w-full  flex flex-col justify-center gap-1">
+            <p className="mx-2 text-2xl font-semibold text-pink-300 drop-shadow-[0_0_3px_#f0f] text-outline">{discord_Name}</p>
+            <p className="mx-2 text-[16px] font-semibold text-pink-300 drop-shadow-[0_0_3px_#f0f] text-outline">{discord_Username}</p>
+            <div className='flex'>
+              <img src={discord_Status_Active?.icon} alt={discord_Status_Active?.name} title={discord_Status_Active?.name} className='h-[24px] w-[24px] mx-2  '/>
+            
+              {discord_Status_Custom && (
+                <p className=" text-pink-300 drop-shadow-[0_0_3px_#f0f] text-outline text-[18px] font-semibold ">
+                  <span className="text-green-300 mr-3">•</span>
+                  {discord_Status_Custom?.slice(0,20)}
+                </p>
+              )}
+            </div>
           </div>
         </div>
-      </div>
-      <div className='flex m-5 self-start h-full items-end'>
-        <button
-  onClick={() => setPlayLofi(prev => !prev)}
-  className={`border h-8 w-8 rounded flex items-center justify-center ${
-    playLofi ? 'bg-neutral-500' : 'border-white'
-  } transition duration-300`}
->
-  🎵
-</button>
-      </div>
-          {playLofi && (
-  <audio src="Lofi.mp3" autoPlay loop hidden />
-)}
 
+        {/* Content */}
+        <div className="flex gap-4 flex-col">
+          {/* Game Activity */}
+          {discord_Activity && (
+            <div style={{ borderColor: 'rgba(0, 0, 0, 0.7)' }} className="border bg-[rgba(255,255,255,0.09)] py-2 px-2 rounded-2xl">
+              <div className="font-semibold text-outline tracking-wide text-cyan-200 drop-shadow-[0_0_2px_#0ff]">
+                <p>PLAYING A GAME</p>
+              </div>
+              <div className="ml-2 mt-2 flex items-center">
+                {discord_Activity.image && (
+                  <img
+                    src={discord_Activity.image}
+                    alt="Game Art"
+                    className="w-16 h-16 mt-2 border-1 border-white rounded-md"
+                  />
+                )}
+                <div>
+                  <p className="text-2xl font-semibold text-outline tracking-wide text-[#ffa2a2] mx-3">{discord_Activity.name}</p>
+                  <p className="mx-3 text-neutral-200 drop-shadow-[0_0_2px_#111] text-sm font-semibold">{discord_Activity.largeText}</p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Spotify */}
+          {discordSpotify && (
+            <div style={{ borderColor: 'rgba(0, 0, 0, 0.7)' }} className="border py-2 px-2 rounded-2xl bg-[rgba(255,255,255,0.09)]">
+              <div className="font-semibold text-cyan-200 drop-shadow-[0_0_2px_#0ff] text-outline tracking-wide">
+                <p>LISTENING TO SPOTIFY</p>
+              </div>
+              <div className="ml-2 mt-2 flex items-center">
+                <img
+                  src={discordSpotify.image}
+                  alt={discordSpotify.song}
+                  className="w-16 h-16 mt-2 rounded-md border border-white"
+                />
+                <div>
+                  <p className="text-[#ffa2a2] tracking-w text-outline text-2xl font-semibold mx-3">{discordSpotify.song?.slice(0,20)}...</p>
+                  <p className="text-neutral-200 drop-shadow-[0_0_2px_#111] font-semibold text-sm mx-3">{discordSpotify.artist}</p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* YouTube */}
+          {discordYouTube && (
+            <div style={{ borderColor: 'rgba(0, 0, 0, 0.6)' }} className="border py-2 px-2 rounded-2xl bg-[rgba(255,255,255,0.09)]">
+              <div className="font-semibold text-cyan-200 drop-shadow-[0_0_2px_#0ff] text-outline tracking-wider">
+                <p>WATCHING ON YOUTUBE</p>
+              </div>
+              <div className="ml-2 mt-2 flex items-center">
+                <img
+                  src={youtube}
+                  alt={discordYouTube.title}
+                  className="w-16 h-16 mt-2 rounded-md"
+                />
+                <div>
+                  <p className="text-[#ffa2a2] tracking-wide text-outline text-[18px] font-semibold mx-3">{discordYouTube.title?.slice(0,20)}...</p>
+                  <p className="text-neutral-200 drop-shadow-[0_0_2px_#111] font-semibold text-sm mx-3">{discordYouTube.channel}</p>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Lofi Button */}
+        {/* <div className="flex m-5 self-start h-full items-end">
+          <button
+            onClick={() => setPlayLofi((prev) => !prev)}
+            className={`border h-8 w-8 rounded flex items-center justify-center ${
+              playLofi ? 'bg-neutral-500' : 'border-white'
+            } transition duration-300`}
+          >
+            🎵
+          </button>
+        </div>
+        {playLofi && <audio src="src/assets/Lofi.mp3" autoPlay loop hidden />} */}
+      </div>
     </div>
   )
 }

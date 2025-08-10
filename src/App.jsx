@@ -3,7 +3,7 @@
 import { FloatingDockDemo } from './navbar-test';
 import { CardSpotlightDemo } from './background-test';
 import Skills_card from './components/Skills_card';
-import JumpScare from './JumpScare';
+
 import MouseTrail from './components/MouseTrail';
 
 const App = () => {
@@ -28,7 +28,6 @@ const App = () => {
       </div>
       
       <Skills_card/>  
-      <JumpScare/>
       
     </>
   );

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" role="img">
+  <defs>
+    <!-- mask: white = visible, black = removed -->
+    <mask id="discord-idle-mask">
+      <rect width="24" height="24" fill="white"/>
+      <!-- this circle cuts away part of the filled circle to create the crescent -->
+      <circle cx="15.5" cy="9.5" r="7" fill="black"/>
+    </mask>
+  </defs>
+
+  <!-- filled circle that becomes a crescent because of the mask -->
+  <circle cx="9.5" cy="12" r="7.5" fill="#FAA61A" mask="url(#discord-idle-mask)"/>
+</svg>
