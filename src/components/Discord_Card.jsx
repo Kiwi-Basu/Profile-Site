@@ -92,9 +92,7 @@ const Discord_Card = () => {
     }
   }
 
-  useEffect(() => {
-    updateStatus()
-  }, [])
+  updateStatus()
 
   return (
     <div className="bg-cover bg-center h-[580px] w-[350px]  rounded-2xl" style={{ backgroundImage: `url(${bg})`}}>
