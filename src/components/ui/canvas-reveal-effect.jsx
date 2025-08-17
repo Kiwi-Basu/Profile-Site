@@ -1,250 +1,107 @@
-//"Hello Word"(print)
-
+//"Hello World"(print)
 "use client";
-import { cn } from "../../lib/util-background";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import React, { useMemo, useRef } from "react";
-import * as THREE from "three";
 
-export const CanvasRevealEffect = ({
-  animationSpeed = 0.4,
-  opacities = [0.3, 0.3, 0.3, 0.5, 0.5, 0.5, 0.8, 0.8, 0.8, 1],
-  colors = [[0, 255, 255]], // Neon cyan
-  containerClassName,
-  dotSize,
-  showGradient = true,
-  darkTheme = true,
-}) => {
-  return (
-    <div
-      className={cn(
-        "h-full relative w-full rounded-lg overflow-hidden",
-        darkTheme
-          ? "bg-gradient-to-br from-gray-900 via-gray-800 to-gray-950 border border-cyan-500 shadow-cyan-700/50 shadow-lg"
-          : "bg-white",
-        containerClassName
-      )}
-    >
-      <div className="absolute inset-0 z-0">
-        <LeafMatrix
-          colors={colors ?? [[0, 255, 255]]}
-          dotSize={dotSize ?? 6}
-          opacities={
-            opacities ?? [0.3, 0.3, 0.3, 0.5, 0.5, 0.5, 0.8, 0.8, 0.8, 1]
-          }
-          animationSpeed={animationSpeed}
-          center={["x", "y"]}
-        />
-      </div>
-      {showGradient && (
-        <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-gray-900 via-transparent to-transparent" />
-      )}
-    </div>
-  );
-};
+import React, { useRef, useState, useEffect } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
 
-const LeafMatrix = ({
-  colors = [[0, 255, 255]],
-  opacities = [0.2, 0.4, 0.6, 0.8, 1],
-  totalSize = 12,
-  dotSize = 6,
-  animationSpeed = 0.4,
-  center = ["x", "y"],
-}) => {
-  const uniforms = React.useMemo(() => {
-    return {
-      u_colors: {
-        value: colors.map((color) => [
-          color[0] / 255,
-          color[1] / 255,
-          color[2] / 255,
-        ]),
-        type: "uniform3fv",
-      },
-      u_opacities: {
-        value: opacities,
-        type: "uniform1fv",
-      },
-      u_total_size: { value: totalSize, type: "uniform1f" },
-      u_dot_size: { value: dotSize, type: "uniform1f" },
-      u_animation_speed: { value: animationSpeed, type: "uniform1f" },
-    };
-  }, [colors, opacities, totalSize, dotSize, animationSpeed]);
-
-  return (
-    <Shader
-      source={`
-        precision mediump float;
-        in vec2 fragCoord;
-
-        uniform float u_time;
-        uniform float u_opacities[5];
-        uniform vec3 u_colors[1];
-        uniform float u_total_size;
-        uniform float u_dot_size;
-        uniform float u_animation_speed;
-        uniform vec2 u_resolution;
-        out vec4 fragColor;
-
-        // Simple hash function for randomness
-        float hash(vec2 p) {
-          return fract(sin(dot(p, vec2(12.9898,78.233))) * 43758.5453);
-        }
-
-        // Draw ellipse shape (leaf-like)
-        float ellipse(vec2 p, vec2 radius) {
-          return smoothstep(1.0, 0.95, length(p / radius));
-        }
-
-        void main() {
-          vec2 st = fragCoord.xy;
-
-          ${
-            center.includes("x")
-              ? "st.x -= abs(floor((mod(u_resolution.x, u_total_size) - u_dot_size) * 0.5));"
-              : ""
-          }
-          ${
-            center.includes("y")
-              ? "st.y -= abs(floor((mod(u_resolution.y, u_total_size) - u_dot_size) * 0.5));"
-              : ""
-          }
-
-          vec2 gridPos = floor(st / u_total_size);
-          vec2 localPos = mod(st, u_total_size) - u_total_size * 0.5;
-
-          // Create drifting effect by offsetting leaf position with sin wave and randomness
-          float driftX = sin(u_time * u_animation_speed + gridPos.y * 1.5) * 3.0;
-          float driftY = cos(u_time * u_animation_speed + gridPos.x * 1.7) * 2.0;
-
-          vec2 leafPos = localPos - vec2(driftX, driftY);
-
-          // Leaf shape: ellipse elongated vertically
-          float leaf = ellipse(leafPos, vec2(u_dot_size * 0.5, u_dot_size * 1.5));
-
-          // Soft edges for leaf shape
-          leaf = 1.0 - leaf;
-
-          // Add a subtle flicker with sine wave per leaf for opacity
-          float flickerPhase = hash(gridPos) * 6.2831;
-          float flicker = 0.5 + 0.5 * sin(u_time * 5.0 + flickerPhase);
-
-          float alpha = leaf * flicker * u_opacities[int(flicker * 4.0)];
-
-          vec3 color = u_colors[0];
-
-          fragColor = vec4(color, alpha);
-          fragColor.rgb *= fragColor.a;
-        }
-      `}
-      uniforms={uniforms}
-      maxFps={60}
-    />
-  );
-};
-
-const ShaderMaterial = ({ source, uniforms, maxFps = 60 }) => {
-  const { size } = useThree();
-  const ref = useRef();
-  let lastFrameTime = 0;
+// Single glowing particle with random color
+function Particle({ initialPos, speed, size, color }) {
+  const mesh = useRef();
 
   useFrame(({ clock }) => {
-    if (!ref.current) return;
-    const timestamp = clock.getElapsedTime();
-    if (timestamp - lastFrameTime < 1 / maxFps) {
-      return;
-    }
-    lastFrameTime = timestamp;
+    if (!mesh.current) return;
+    const elapsed = clock.getElapsedTime();
 
-    const material = ref.current.material;
-    const timeLocation = material.uniforms.u_time;
-    timeLocation.value = timestamp;
+    // Calculate current y position, falling down continuously
+    // Use modulo to wrap smoothly from bottom back to top
+    const fallRange = 6; // from +3 to -3
+    let y =
+      ((initialPos[1] - speed * elapsed + fallRange) % fallRange) - 3;
+
+    // X oscillation for wind effect
+    const windAmplitude = 0.3;
+    const windFrequency = 1;
+    let x = initialPos[0] + Math.sin(elapsed * windFrequency) * windAmplitude;
+
+    mesh.current.position.set(x, y, 0);
+
+    // Slow rotation for nice subtle effect
+    mesh.current.rotation.z = elapsed * 0.5;
   });
 
-  const getUniforms = () => {
-    const preparedUniforms = {};
-
-    for (const uniformName in uniforms) {
-      const uniform = uniforms[uniformName];
-
-      switch (uniform.type) {
-        case "uniform1f":
-          preparedUniforms[uniformName] = { value: uniform.value, type: "1f" };
-          break;
-        case "uniform3f":
-          preparedUniforms[uniformName] = {
-            value: new THREE.Vector3().fromArray(uniform.value),
-            type: "3f",
-          };
-          break;
-        case "uniform1fv":
-          preparedUniforms[uniformName] = { value: uniform.value, type: "1fv" };
-          break;
-        case "uniform3fv":
-          preparedUniforms[uniformName] = {
-            value: uniform.value.map((v) =>
-              new THREE.Vector3().fromArray(v)
-            ),
-            type: "3fv",
-          };
-          break;
-        case "uniform2f":
-          preparedUniforms[uniformName] = {
-            value: new THREE.Vector2().fromArray(uniform.value),
-            type: "2f",
-          };
-          break;
-        default:
-          console.error(`Invalid uniform type for '${uniformName}'.`);
-          break;
-      }
-    }
-
-    preparedUniforms["u_time"] = { value: 0, type: "1f" };
-    preparedUniforms["u_resolution"] = {
-      value: new THREE.Vector2(size.width * 2, size.height * 2),
-    };
-    return preparedUniforms;
-  };
-
-  const material = useMemo(() => {
-    const materialObject = new THREE.ShaderMaterial({
-      vertexShader: `
-      precision mediump float;
-      in vec2 coordinates;
-      uniform vec2 u_resolution;
-      out vec2 fragCoord;
-      void main(){
-        float x = position.x;
-        float y = position.y;
-        gl_Position = vec4(x, y, 0.0, 1.0);
-        fragCoord = (position.xy + vec2(1.0)) * 0.5 * u_resolution;
-        fragCoord.y = u_resolution.y - fragCoord.y;
-      }
-      `,
-      fragmentShader: source,
-      uniforms: getUniforms(),
-      glslVersion: THREE.GLSL3,
-      blending: THREE.CustomBlending,
-      blendSrc: THREE.SrcAlphaFactor,
-      blendDst: THREE.OneFactor,
-    });
-
-    return materialObject;
-  }, [size.width, size.height, source]);
-
   return (
-    <mesh ref={ref}>
-      <planeGeometry args={[2, 2]} />
-      <primitive object={material} attach="material" />
+    <mesh ref={mesh} position={initialPos}>
+      <sphereGeometry args={[size, 8, 8]} />
+      <meshBasicMaterial color={color} transparent opacity={1} />
     </mesh>
   );
-};
+}
 
-const Shader = ({ source, uniforms, maxFps = 60 }) => {
+function InfiniteParticles({ count = 150 }) {
+  const [particles, setParticles] = useState([]);
+
+  // Array of colors for particles
+  const colors = [
+    "#aaf0ff", // light blue
+    "#ffb347", // orange
+    "#ffd700", // gold
+    "#90ee90", // light green
+    "#ff69b4", // pink
+    "#87ceeb", // sky blue
+  ];
+
+  useEffect(() => {
+    // Initialize particle data
+    const arr = [];
+    for (let i = 0; i < count; i++) {
+      arr.push({
+        id: i,
+        pos: [(Math.random() - 0.5) * 4, 3 + Math.random() * 3, 0],
+        speed: 0.5 + Math.random() * 0.5,
+        size: 0.02 + Math.random() * 0.05,
+        color: colors[Math.floor(Math.random() * colors.length)],
+      });
+    }
+    setParticles(arr);
+  }, [count]);
+
   return (
-    <Canvas className="absolute inset-0 h-full w-full">
-      <ShaderMaterial source={source} uniforms={uniforms} maxFps={maxFps} />
-    </Canvas>
+    <>
+      {particles.map(({ id, pos, speed, size, color }) => (
+        <Particle
+          key={id}
+          initialPos={pos}
+          speed={speed}
+          size={size}
+          color={color}
+        />
+      ))}
+    </>
+  );
+}
+
+export const CanvasRevealEffect = ({
+  containerClassName,
+  showGradient = true,
+}) => {
+  React.useEffect(() => {
+    console.log("Hello World");
+  }, []);
+
+  return (
+    <div
+      className={`h-full relative w-full overflow-hidden ${containerClassName ?? ""}`}
+      style={{ background: "#001022" }}
+    >
+      <Canvas
+        orthographic
+        camera={{ position: [0, 0, 5], zoom: 150 }}
+        style={{ width: "100%", height: "100%", background: "transparent" }}
+      >
+        <ambientLight intensity={0.3} />
+        <InfiniteParticles count={70} />
+      </Canvas>
+      {showGradient && <div className="absolute inset-0 pointer-events-none" />}
+    </div>
   );
 };

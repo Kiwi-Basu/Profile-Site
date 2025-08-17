@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react'
-
+//"Hello World"(print)
+import React, {useState } from 'react'
 import idle from '../assets/idle.svg'
 import online from '../assets/online.svg'
 import dnd from '../assets/dnd.svg'
 import invisible from '../assets/invisible.svg'
 import youtube from '../assets/youtube.svg'
-import bg from '/discord_card_bg.png'
 
 const Discord_Card = () => {
   const [profile_Picture, setProfile_Picture] = useState()
@@ -95,115 +94,142 @@ const Discord_Card = () => {
   updateStatus()
 
   return (
-    <div className="bg-cover bg-center h-[580px] w-[350px]  rounded-2xl" style={{ backgroundImage: `url(${bg})`}}>
-      <div className="h-[580px] w-[350px] backdrop-blur-[1px]  border-2 rounded-2xl p-2 border-[rgba(78,226,176,0.4)] ">
-        {/* Header */}
-        <div className="h-[150px] w-full my-1 flex items-center">
-          <div>
-            <div className="relative h-[125px] w-[125px] ml-1">
-              <img
-                src={profile_Picture}
-                alt="Avatar"
-                className="rounded-full p-0.5 border-2 border-[#7d8187] h-[125px] w-[125px]"
-                draggable="false"
-              />
-      
-            </div>
-          </div>
-          <div className="h-full w-full  flex flex-col justify-center gap-1">
-            <p className="mx-2 text-2xl font-semibold text-pink-300 drop-shadow-[0_0_3px_#f0f] text-outline">{discord_Name}</p>
-            <p className="mx-2 text-[16px] font-semibold text-pink-300 drop-shadow-[0_0_3px_#f0f] text-outline">{discord_Username}</p>
-            <div className='flex'>
-              <img src={discord_Status_Active?.icon} alt={discord_Status_Active?.name} title={discord_Status_Active?.name} className='h-[24px] w-[24px] mx-2  '/>
-            
-              {discord_Status_Custom && (
-                <p className=" text-pink-300 drop-shadow-[0_0_3px_#f0f] text-outline text-[18px] font-semibold ">
-                  <span className="text-green-300 mr-3">•</span>
-                  {discord_Status_Custom?.slice(0,20)}
-                </p>
-              )}
-            </div>
-          </div>
-        </div>
+    <div className = "flex justify-center lg:mt-3 mt-20 ">
+        <div className="lg:h-[547px] lg:w-[350px] lg:rounded-2xl lg:p-3 lg:backdrop-brightness-100 lg:border bg-[rgba(20,113,195,0.25)]
+          h-[1100px] w-[700px] border-4 rounded-4xl p-5 backdrop-blur-[10px] border-r-white/10 border-t-white/10 border-l-white/30 border-b-white/20 lg:bg-[rgba(255,255,255,0.01)]">
+          {/* Header */}
 
-        {/* Content */}
-        <div className="flex gap-4 flex-col">
-          {/* Game Activity */}
-          {discord_Activity && (
-            <div style={{ borderColor: 'rgba(0, 0, 0, 0.7)' }} className="border bg-[rgba(255,255,255,0.09)] py-2 px-2 rounded-2xl">
-              <div className="font-semibold text-outline tracking-wide text-cyan-200 drop-shadow-[0_0_2px_#0ff]">
-                <p>PLAYING A GAME</p>
+          <div className="lg:h-[150px] lg:my-1
+            h-[300px]  w-full my-2  flex items-center">
+            <div>
+              <div className=" lg:h-[125px] lg:w-[125px] lg:ml-1
+              h-[250px] w-[250px] ml-2 ">
+                <img
+                  src={profile_Picture}
+                  alt="Avatar"
+                  className="rounded-full p-0.5 border-2 border-[#7d8187] lg:h-[125px] lg:w-[125px]
+                  h-[250px] w-[250px]
+                  "
+                  draggable="false"
+                />
+        
               </div>
-              <div className="ml-2 mt-2 flex items-center">
-                {discord_Activity.image && (
-                  <img
-                    src={discord_Activity.image}
-                    alt="Game Art"
-                    className="w-16 h-16 mt-2 border-1 border-white rounded-md"
-                  />
+            </div>
+            <div className="h-full w-full  flex flex-col justify-center gap-1">
+              <p className="lg:mx-2 lg:text-2xl
+              mx-8 text-5xl font-semibold text-pink-300 drop-shadow-[0_0_3px_#f0f] text-outline">{discord_Name}</p>
+              <p className="lg:mx-2 lg:text-[16px]
+              mx-8 text-[32px] font-semibold text-pink-300 drop-shadow-[0_0_3px_#f0f] text-outline">{discord_Username}</p>
+              <div className='flex'>
+                <img src={discord_Status_Active?.icon} alt={discord_Status_Active?.name} title={discord_Status_Active?.name} className='lg:h-[24px] lg:w-[24px] lg:mx-2 h-[40px] ml-8 '/>
+              
+                {discord_Status_Custom && (
+                  <p className="text-[25px] text-pink-300 drop-shadow-[0_0_3px_#f0f] text-outline font-semibold lg:text-[18px] ">
+                    <span className="text-green-300 mr-5 lg:mr-3">•</span>
+                    {discord_Status_Custom?.slice(0,20)}
+                  </p>
                 )}
-                <div>
-                  <p className="text-2xl font-semibold text-outline tracking-wide text-[#ffa2a2] mx-3">{discord_Activity.name}</p>
-                  <p className="mx-3 text-neutral-200 drop-shadow-[0_0_2px_#111] text-sm font-semibold">{discord_Activity.largeText}</p>
-                </div>
               </div>
             </div>
-          )}
+          </div>
 
-          {/* Spotify */}
-          {discordSpotify && (
-            <div style={{ borderColor: 'rgba(0, 0, 0, 0.7)' }} className="border py-2 px-2 rounded-2xl bg-[rgba(255,255,255,0.09)]">
-              <div className="font-semibold text-cyan-200 drop-shadow-[0_0_2px_#0ff] text-outline tracking-wide">
-                <p>LISTENING TO SPOTIFY</p>
-              </div>
-              <div className="ml-2 mt-2 flex items-center">
-                <img
-                  src={discordSpotify.image}
-                  alt={discordSpotify.song}
-                  className="w-16 h-16 mt-2 rounded-md border border-white"
-                />
-                <div>
-                  <p className="text-[#ffa2a2] tracking-w text-outline text-2xl font-semibold mx-3">{discordSpotify.song?.slice(0,20)}...</p>
-                  <p className="text-neutral-200 drop-shadow-[0_0_2px_#111] font-semibold text-sm mx-3">{discordSpotify.artist}</p>
-                </div>
-              </div>
-            </div>
-          )}
+          {/* Content */}
+          <div className="flex gap-8 flex-col lg:gap-4">
 
-          {/* YouTube */}
-          {discordYouTube && (
-            <div style={{ borderColor: 'rgba(0, 0, 0, 0.6)' }} className="border py-2 px-2 rounded-2xl bg-[rgba(255,255,255,0.09)]">
-              <div className="font-semibold text-cyan-200 drop-shadow-[0_0_2px_#0ff] text-outline tracking-wider">
-                <p>WATCHING ON YOUTUBE</p>
-              </div>
-              <div className="ml-2 mt-2 flex items-center">
-                <img
-                  src={youtube}
-                  alt={discordYouTube.title}
-                  className="w-16 h-16 mt-2 rounded-md"
-                />
-                <div>
-                  <p className="text-[#ffa2a2] tracking-wide text-outline text-[18px] font-semibold mx-3">{discordYouTube.title?.slice(0,20)}...</p>
-                  <p className="text-neutral-200 drop-shadow-[0_0_2px_#111] font-semibold text-sm mx-3">{discordYouTube.channel}</p>
+            {/* Game Activity */}
+
+            {discord_Activity && (
+              <div style={{ borderColor: 'rgba(0, 0, 0, 0.7)' }} className="border bg-[rgba(255,255,255,0.09)] rounded-4xl p-5 
+              lg:p-2 lg:rounded-2xl
+              ">
+                <div className="font-semibold text-outline tracking-wide text-cyan-200 drop-shadow-[0_0_2px_#0ff]">
+                  <p className='lg:text-[16px] text-3xl'>PLAYING A GAME</p>
+                </div>
+                <div className="ml-2 mt-2 flex items-center">
+                  {discord_Activity.image && (
+                    <img
+                      src={discord_Activity.image}
+                      alt="Game Art"
+                      className="lg:w-14 lg:h-14 mt-2
+                      w-32 h-32 border-1 border-white rounded-md"
+                    />
+                  )}
+                  <div>
+                    <p className="text-5xl font-semibold text-outline tracking-wide text-[#ffa2a2] mx-6 
+                      lg:mx-3 lg:text-[18px]">
+                      {discord_Activity.name}
+                    </p>
+                    <p className="mx-6 text-neutral-200 drop-shadow-[0_0_2px_#111] text-3xl font-semibold 
+                    lg:mx-3 lg:text-sm">{discord_Activity.largeText}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-          )}
+            )}
+
+            {/* Spotify */}
+            {discordSpotify && (
+              <div style={{ borderColor: 'rgba(0, 0, 0, 0.7)' }} className="border bg-[rgba(255,255,255,0.09)] rounded-4xl p-5
+              lg:p-2 lg:rounded-2xl
+              ">
+                <div className="font-semibold text-cyan-200 drop-shadow-[0_0_2px_#0ff] text-outline tracking-wide">
+                  <p className='lg:text-[16px] text-3xl'>LISTENING TO SPOTIFY</p>
+                </div>
+                <div className="ml-2 mt-2 flex items-center">
+                  <img
+                    src={discordSpotify.image}
+                    alt={discordSpotify.song}
+                    className="lg:w-14 lg:h-14 mt-2 
+                    w-32 h-32 rounded-md border border-white"
+                  />
+                  <div>
+                    <p className="text-5xl font-semibold text-outline tracking-wide text-[#ffa2a2] mx-6
+                      lg:mx-3 lg:text-[18px]">{discordSpotify.song?.slice(0,20)}...</p>
+                    <p className="mx-6 text-neutral-200 drop-shadow-[0_0_2px_#111] text-3xl font-semibold 
+                    lg:mx-3 lg:text-sm">{discordSpotify.artist?.slice(0,20)}...</p>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* YouTube */}
+            {discordYouTube && (
+              <div style={{ borderColor: 'rgba(0, 0, 0, 0.6)' }}className="border bg-[rgba(255,255,255,0.09)] rounded-4xl p-5
+              lg:p-2 lg:rounded-2xl
+              ">
+                <div className="font-semibold text-cyan-200 drop-shadow-[0_0_2px_#0ff] text-outline tracking-wider">
+                  <p className='lg:text-[16px] text-3xl'>WATCHING ON YOUTUBE</p>
+                </div>
+                <div className="ml-2 mt-2 flex items-center">
+                  <img
+                    src={youtube}
+                    alt={discordYouTube.title}
+                    className="lg:w-14 lg:h-14 
+                    w-32 h-32 mt-2 rounded-md"
+                  />
+                  <div>
+                    <p className="text-[40px] font-semibold text-outline tracking-wide text-[#ffa2a2] mx-6
+                      lg:mx-3 lg:text-[18px]">{discordYouTube.title?.slice(0,20)}...</p>
+                    <p className="mx-6 text-neutral-200 drop-shadow-[0_0_2px_#111] text-3xl font-semibold 
+                    lg:mx-3 lg:text-sm">{discordYouTube.channel}</p>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Lofi Button */}
+          {/* <div className="flex m-5 self-start h-full items-end">
+            <button
+              onClick={() => setPlayLofi((prev) => !prev)}
+              className={`border h-8 w-8 rounded flex items-center justify-center ${
+                playLofi ? 'bg-neutral-500' : 'border-white'
+              } transition duration-300`}
+            >
+              🎵
+            </button>
+          </div>
+          {playLofi && <audio src="src/assets/Lofi.mp3" autoPlay loop hidden />} */}
         </div>
-
-        {/* Lofi Button */}
-        {/* <div className="flex m-5 self-start h-full items-end">
-          <button
-            onClick={() => setPlayLofi((prev) => !prev)}
-            className={`border h-8 w-8 rounded flex items-center justify-center ${
-              playLofi ? 'bg-neutral-500' : 'border-white'
-            } transition duration-300`}
-          >
-            🎵
-          </button>
-        </div>
-        {playLofi && <audio src="src/assets/Lofi.mp3" autoPlay loop hidden />} */}
-      </div>
     </div>
   )
 }

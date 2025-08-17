@@ -1,9 +1,6 @@
 /* "Hello World"(print) */
 @import "tailwindcss";
 
-body{
-  background-color: #111;
-}
 
 @keyframes rotate-slow {
   from { transform: rotate(0deg); }
@@ -30,3 +27,4 @@ body{
       1px 1px 0 #000;
   }
 }
+

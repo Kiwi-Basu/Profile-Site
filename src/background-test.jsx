@@ -1,6 +1,5 @@
 //"Hello World"(print)
 
-import Discord_Card from "./components/Discord_Card";
 import { CardSpotlight } from "./components/ui/card-spotlight";
 import React, { useState, useEffect } from "react";
 
@@ -32,36 +31,39 @@ export function CardSpotlightDemo() {
   }, [subIndex, index, deleting]);
 
   return (
-    <div className="flex gap-25">
-      <CardSpotlight className="h-150 w-200 mb-5">
-      <p className="text-xl font-bold relative z-20 mt-2 mb-5 text-white">
+    <div className="flex justify-center gap-25">
+      <CardSpotlight className="lg:h-150 lg:w-200 mb-5
+      h-auto w-[900px] 
+      ">
+      <p className="lg:text-[35px] font-bold lg:relative lg:z-20 mt-2 mb-5 text-white text-[55px]">
         Hello There Stranger I am{" "}
         <span className="text-red-300">
           {typedText}
           <span className="animate-pulse">|</span>
         </span>
       </p>
-
-      <div className="text-[20px] font-semibold relative z-20 mt-2 text-lime-400">
-        I'm currently in my second year pursing Bachelor of Computer Application with little bit of knowledge of Programming and Logic Building. Born a Technophile.
-      </div>
-      <div className="text-[20px]  relative z-20 mt-4 py-3 text-purple-400">
-        Fond of the art of learning everything like GeoPolitics, Psychology, History etc... 
-      </div>
-      <div className="text-[20px]  relative z-20  py-3 text-blue-400">
-        Usually all I do is play games, watch a series or read something 
-      </div>
-      <div className="text-[20px] relative z-20 mt-2 py-3 text-white">
-        Overall, I’m just someone who’s always curious and up for learning something new, whether it’s in tech or just about life. I like to keep things chill but stay motivated to grow, both personally and academically.
-      </div>
-      <div className="text-[20px] relative z-20 mt-2 text-white">
-        I have ran out of idea what else should I write so I am just randomly typing something.
-      </div>
-      <div className="text-[20px] relative font-bold z-20 mt-2">
-        <span className="text-rose-300 ">Have Fun Stranger</span>
+      
+      <div className="lg:text-[25px] lg:relative lg:z-20 text-[40px] lg:tracking-normal tracking-wider">
+        <div className="mt-2 text-lime-300">
+          I'm currently in my second year pursing Bachelor of Computer Application with little bit of knowledge of Programming and Logic Building. Born a Technophile.
+        </div>
+        <div className="lg:mt-2 mt-6 text-purple-400">
+          Fond of the art of learning everything like GeoPolitics, Psychology, History etc... 
+        </div>
+        <div className="lg:mt-2 mt-6 text-blue-400">
+          Usually all I do is play games, watch a series or read something 
+        </div>
+        <div className="lg:mt-2 mt-6 text-purple-400">
+          Overall, just someone who’s always curious and up for learning something new. I like to keep things chill and just be chiling.
+        </div>
+        <div className="lg:mt-2 mt-6 text-lime-300">
+          I have ran out of idea what else should I write so I am just randomly typing something.
+        </div>
+        <div className="text-white lg:text-[35px]  text-[55px] font-bold lg:mt-2 mt-6">
+          Have Fun <span className="text-rose-300 ">Stranger</span>
+        </div>
       </div>
       </CardSpotlight>
-      <Discord_Card/>
     </div>
   );
 }
