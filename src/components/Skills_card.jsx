@@ -1,7 +1,6 @@
 //"Hello World"(print)
 import React from "react";
 import skills from "../../skills";
-import { div } from "motion/react-client";
 
 const Skills_card = () => {
   const outerSkills = skills.slice(0, 6);

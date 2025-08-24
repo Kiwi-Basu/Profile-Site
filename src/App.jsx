@@ -4,7 +4,9 @@ import { FloatingDockDemo } from './navbar-test';
 import { CardSpotlightDemo } from './background-test';
 import Skills_card from './components/Skills_card';
 import Discord_Card from './components/Discord_Card';
-import MouseTrail from './components/MouseTrail';
+import Writer from './components/Writer';
+
+
 
 const App = () => {
   return (    
@@ -47,9 +49,19 @@ const App = () => {
       </div>
       
       <Skills_card/>  
+
+      <div>
+        <div className='ml-35 text-3xl mt-10 text-fuchsia-700'>
+          Write Something
+        </div>
+        <div className='flex justify-center mt-10 mb-20 lg:block lg:ml-35'>
+          <Writer/>
+        </div>
+      </div>
       
     </>
   );
 };
+
 
 export default App;
