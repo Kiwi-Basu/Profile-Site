@@ -16,6 +16,20 @@ const Discord_Card = () => {
   const [discord_Status_Active, setDiscord_Status_Active] = useState()
   // const [playLofi, setPlayLofi] = useState(false)
   const [discordYouTube, setDiscordYouTube] = useState(null)
+  function getAssetImage(applicationId, asset) {
+  if (!asset) return null;
+
+  // Handle Discord's "media proxy" external URLs
+  if (asset.startsWith("mp:external/")) {
+    const externalUrl = asset.split("/https/")[1];
+    return `https://${externalUrl}`;
+  }
+
+  // Handle regular Discord CDN assets
+  return `https://cdn.discordapp.com/app-assets/${applicationId}/${asset}.png`;
+}
+
+  
 
   async function updateStatus() {
     const res = await fetch(
@@ -49,21 +63,20 @@ const Discord_Card = () => {
     setDiscord_Status_Custom(custom?.state)
 
     // Game / App Activity
-    const activity = data.activities.find((a) => a.type === 0)
-    if (activity) {
-      setDiscord_Activity({
-        name: activity.name,
-        details: activity.details || null,
-        state: activity.state || null,
-        largeText: activity.assets?.large_text || null,
-        image: activity.assets?.small_image
-          ? `https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets.small_image}.png`
-          : null,
-        startTime: activity.timestamps?.start || null
-      })
-    } else {
-      setDiscord_Activity(null)
-    }
+    // Game / App Activity
+const activity = data.activities.find((a) => a.type === 0);
+if (activity) {
+  setDiscord_Activity({
+    name: activity.name,
+    details: activity.details || null,
+    state: activity.state || null,
+    largeText: activity.assets?.large_text || null,
+    image: getAssetImage(activity.application_id, activity.assets?.large_image) 
+  });
+} else {
+  setDiscord_Activity(null);
+}
+
 
     // Spotify
     if (data.listening_to_spotify && data.spotify) {
@@ -216,19 +229,6 @@ const Discord_Card = () => {
               </div>
             )}
           </div>
-
-          {/* Lofi Button */}
-          {/* <div className="flex m-5 self-start h-full items-end">
-            <button
-              onClick={() => setPlayLofi((prev) => !prev)}
-              className={`border h-8 w-8 rounded flex items-center justify-center ${
-                playLofi ? 'bg-neutral-500' : 'border-white'
-              } transition duration-300`}
-            >
-              🎵
-            </button>
-          </div>
-          {playLofi && <audio src="src/assets/Lofi.mp3" autoPlay loop hidden />} */}
         </div>
     </div>
   )
