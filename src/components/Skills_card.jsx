@@ -1,125 +1,159 @@
 import React, { useState } from 'react'
 import skills from '../utils/skills';
+import { IoMdStar } from "react-icons/io";
 import { div } from 'motion/react-client';
 import { data } from 'react-router';
 
 
 
 
-
-
 const Skills_card = () => {
 
-  const [fullStackSkills, setFullStackSkills] = useState(true);
-  const [databaseSkills, setDatabaseSkills] = useState(false);
-  const [aiSkills, setAISkills] = useState(false);
-  const [languagesSkills, setlanguagesSkills] = useState(false);
+  const [activeSkill, setActiveSkill] = useState("fullstack");
 
-  const toggleFullStackSkills = () => {
-    setFullStackSkills(!fullStackSkills);
-  }
 
-  const toggleDatabaseSkills = () => {
-    setDatabaseSkills(!databaseSkills);
-  }
+  const toggleFullStackSkills = () => setActiveSkill("fullstack");
 
-  const toggleAISkills = () => {
-    setAISkills(!aiSkills);
-  }
+  const toggleDatabaseSkills = () => setActiveSkill("database");
 
-  const toggleLanguagesSkills = () => {
-    setlanguagesSkills(!languagesSkills);
-  }
+  const toggleAISkills = () => setActiveSkill("ai");
+
+  // const toggleLanguagesSkills = () => setActiveSkill("languages");
 
   return (
     <>
-      <div className='mx-20 my-10'>
-        <div className='lg:text-[30px] text-[50px]'>
-          skills
+      <div className = "h-[200px] w-[1090px] border-3 rounded-2xl ">
+        <div className='h-full w-full border-5 border-[#FBFB09] rounded-2xl'>
+          <div className='h-full w-full border-3 rounded-2xl flex'>
+            <div className=' h-full w-[200px] bg-[#C53A2A] flex flex-col px-3 '>
+              <div className='h-[40px] flex items-center justify-center w-full   my-5'>
+                < IoMdStar className='text-[50px] text-yellow-400'/>
+                <p className='text-[30px] relative top-1.5 text-white'>#86</p>
+              </div>
+              <div className='text-[20px] text-white text-shadow-md text-shadow-[#2f2d2d]'>
+                <p className='text-center'>DEVELOPER</p>
+                <p className='text-center'>/HUMAN</p>
+              </div>
+            </div>
+
+            <div className='h-full bg-[#087897] w-full'>
+              <p className='text-white text-[23px] mx-5 my-3'>SUNISH SURESH AKA KIWI </p>
+              <div className='flex justify-between mx-5 text-white text-[17px] text-shadow-md text-shadow-[#2f2d2d8d] '>
+                <p>ABILITY : MULTI-TASKING</p>
+                <p>ABILITY: PROCRASTINATION</p>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+      
+      {/* skills */}
+      <div className='flex justify-evenly  w-[1090px] my-10'>
+        <button
+          onClick={toggleFullStackSkills}
+          className={`
+            w-[230px] border-3 my-3 px-5 py-2 rounded-xl 
+            text-shadow-md text-shadow-[#463f3f74]
+            transition-all duration-200 ease-in-out
+            active:scale-95 active:translate-y-[2px]
+            ${activeSkill === "fullstack"
+              ? "bg-[#F9BE00] border-black scale-105 shadow-[3px_3px_0px_rgba(0,0,0,1)]"
+              : "bg-[#d3c06a] opacity-60 border-gray-700 shadow-none"}
+          `}
+        >
+          FULL STACK
+        </button>
+        <button
+          onClick={toggleDatabaseSkills}
+          className={`
+            w-[230px] border-3 my-3 px-5 py-2 rounded-xl 
+            text-shadow-md text-shadow-[#463f3f74]
+            transition-all duration-200 ease-in-out
+            active:scale-95 active:translate-y-[2px]
+            ${activeSkill === "database"
+              ? "bg-[#F9BE00] border-black scale-105 shadow-[3px_3px_0px_rgba(0,0,0,1)]"
+              : "bg-[#d3c06a] opacity-60 border-gray-700 shadow-none"}
+          `}
+        >
+          DATABASE
+        </button>
+        <button
+          onClick={toggleAISkills}
+          className={`
+            w-[230px] border-3 my-3 px-5 py-2 rounded-xl 
+            text-shadow-md text-shadow-[#463f3f74]
+            transition-all duration-200 ease-in-out
+            active:scale-95 active:translate-y-[2px]
+            ${activeSkill === "ai"
+              ? "bg-[#F9BE00] border-black scale-105 shadow-[3px_3px_0px_rgba(0,0,0,1)]"
+              : "bg-[#d3c06a] opacity-60 border-gray-700 shadow-none"}
+          `}
+        >
+          AI
+        </button>
 
-        <div className='gap-5 flex flex-col '>
-          <div className=''>
-            <p className='lg:text-[25px] text-[35px] lg:mt-5 mt-10  cursor-pointer  text-white text-shadow-lg text-shadow-[#12111148] w-fit mb-10 lg:mb-5' onClick={toggleFullStackSkills}>Full-Stack {fullStackSkills ? "▲" : "▼"} </p>
-            {fullStackSkills && (
-              <div className=' flex gap-4 flex-wrap mx-10  lg:mx-5'>
-                {skills.fullStack.map((skill,key) => {
-                  return(
-                    <div key={key} 
-                      className='lg:h-40 lg:w-30 h-55 w-40 border flex flex-col items-center justify-center rounded-xl hover:scale-105 duration-200 bg-white/10 backdrop-blur-xl border-white/20 overflow-hidden skill-shine  shadow-[0_8px_32px_rgba(31,38,135,0.37)]'>
-                      <img src={skill.iconUrl} alt={skill.name} className='w-30 h-30  lg:w-20 lg:h-20 inline-block my-3'/>
-                      <span className="lg:text-sm text-[25px] font-light lg:font-medium">
-                        {skill.name}
-                      </span>
-                    </div>
-                  )  
-                })}
-              </div>
-            )}
-          </div>
+      </div>
+      
+      <div className='h-[150px] w-[1090px]  flex justify-evenly items-center  my-5'>
+        {activeSkill === "fullstack" &&(
+          <>
+            {skills.fullStack.map((skill,key) => {
+              return (
+                <div key = {key} className=''>
+                  <div className='border-3 border-black rounded-2xl w-[150px] text-center text-white pixel-rounded '>
+                    <p className=' rounded-t-xl h-[30px] border-2 border-b-transparent  border-[#ffffff76]  flex items-center justify-center py-5' style={{backgroundColor: skill.color}}>
+                      {skill.name}
+                    </p>
+                    <p className='bg-[#17475D]  rounded-b-xl h-[30px] flex items-center justify-center py-5'>
+                      {skill.type}
+                    </p>
+                  </div>
+                </div>
+              )
+            })}
+          </>
+        )}
+        {activeSkill === "database" && (
+          <>
+            {skills.dataBase.map((skill,key) => {
+              return (
+                <div key = {key} className=''>
+                  <div className='border-3 border-black rounded-2xl w-[150px] text-center text-white pixel-rounded '>
+                    <p className=' rounded-t-xl h-[30px] border-2 border-b-transparent  border-[#ffffff76]  flex items-center justify-center py-5' style={{backgroundColor: skill.color}}>
+                      {skill.name}
+                    </p>
+                    <p className='bg-[#17475D] border-2 border-t-transparent  border-[#ffffff76]   rounded-b-xl h-[30px] flex items-center justify-center py-5'>
+                      {skill.type}
+                    </p>
+                  </div>
+                </div>
+              )
+            })}
+          </>
+        )}
+        {activeSkill === "ai" && (
+          <>
+            {skills.ML.map((skill,key) => {
+              return (
+                <div key = {key} className=''>
+                  <div className='border-3 border-black rounded-2xl w-[150px] text-center text-white pixel-rounded '>
+                    <p className=' rounded-t-xl h-[30px] border-2 border-b-transparent  border-[#ffffff76]  flex items-center justify-center py-5' style={{backgroundColor: skill.color}}>
+                      {skill.name}
+                    </p>
+                    <p className='bg-[#17475D]  rounded-b-xl h-[30px] flex items-center justify-center py-5'>
+                      {skill.type}
+                    </p>
+                  </div>
+                </div>
+              )
+            })}
+          </>
+        )}
 
-          <div className=''>
-            <p className='lg:text-[25px] text-[35px] lg:mt-5 mt-10   cursor-pointer  text-white text-shadow-lg text-shadow-[#12111148] w-fit mb-10 lg:mb-5' onClick={toggleDatabaseSkills}>DataBase {databaseSkills ? "▲" : "▼"} </p>
-            {databaseSkills && (
-              <div className=' flex gap-4 flex-wrap mx-5'>
-                {skills.dataBase.map((skill,key) => {
-                  return(
-                    <div key={key} 
-                      className='lg:h-40 lg:w-30 h-55 w-40 border flex flex-col items-center justify-center rounded-xl hover:scale-105 duration-200 bg-white/10 backdrop-blur-xl border-white/20 overflow-hidden skill-shine  shadow-[0_8px_32px_rgba(31,38,135,0.37)]'>
-                      <img src={skill.iconUrl} alt={skill.name} className='w-20 h-20 inline-block my-3'/>
-                      <span className="lg:text-sm text-[25px] font-light lg:font-medium">
-                        {skill.name}
-                      </span>
-                    </div>
-                  )  
-                })}
-              </div>
-            )}
-          </div>
+      </div>
 
-          <div className=''>
-            <p  className='lg:text-[25px] text-[35px] lg:mt-5 mt-10  cursor-pointer  text-white text-shadow-lg text-shadow-[#12111148] w-fit mb-10 lg:mb-5' onClick={toggleAISkills}> AI-ML {aiSkills ? "▲" : "▼"}</p>
-
-            { aiSkills && (
-              <div className=' flex gap-4 flex-wrap mx-5'>
-                {skills.ML.map((skill,key) => {
-                  return(
-                    <div key={key} 
-                      className='lg:h-40 lg:w-30 h-55 w-40 border flex flex-col items-center justify-center rounded-xl hover:scale-105 duration-200 bg-white/10 backdrop-blur-xl border-white/20 overflow-hidden skill-shine  shadow-[0_8px_32px_rgba(31,38,135,0.37)]'>
-                      <img src={skill.iconUrl} alt={skill.name} className='w-20 h-20 inline-block my-3'/>
-                      <span className="lg:text-sm text-[25px] font-light lg:font-medium">
-                        {skill.name}
-                      </span>
-                    </div>
-                  )  
-                })}
-              </div>
-            )}
-          </div>
-          
-          {/* <div className='  '>
-            <p  className='text-[25px] cursor-pointer text-white text-shadow-lg text-shadow-[#12111148] w-fit mb-5
-            ' onClick={toggleLanguagesSkills}>Languages {languagesSkills ? "▲" : "▼" }</p>
-            {languagesSkills && (
-              <div className=' flex gap-4 flex-wrap mx-5'>
-                {skills.languages.map((skill,key) => {
-                  return(
-                    <div key={key} 
-                      className='h-40 w-30 border flex flex-col items-center justify-center rounded-lg hover:scale-105 duration-200 bg-[#4c75d655] backdrop-blur-lg border-black/10 overflow-hidden skill-shine shadow-md shadow-[#443636]'>
-                      <img src={skill.iconUrl} alt={skill.name} className='w-20 h-20 inline-block my-3'/>
-                      <span className="text-sm font-medium">
-                        {skill.name}
-                      </span>
-                    </div>
-                  )  
-                })}
-              </div>
-            )}
-
-          </div> */}
-        </div>
-
-      </div> 
+    
+      
     </>
   )
 }
