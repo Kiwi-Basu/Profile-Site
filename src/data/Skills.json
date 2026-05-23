@@ -1,0 +1,83 @@
+{
+  "skills": [
+    {
+      "category": "Frontend",
+      "items": [
+        {
+          "name": "React",
+          "image": "/imgs/react.png"
+        },
+        {
+          "name": "TypeScript",
+          "image": "/imgs/typescript.png"
+        },
+        {
+          "name": "JavaScript",
+          "image": "/imgs/javascript.png"
+        },
+        {
+          "name": "TailwindCSS",
+          "image": "/imgs/tailwind.png"
+        },
+        {
+          "name": "Framer Motion",
+          "image": "/imgs/framer-motion.png"
+        },
+        {
+          "name": "HTML",
+          "image": "/imgs/html.png"
+        },
+        {
+          "name": "CSS",
+          "image": "/imgs/css.png"
+        }
+      ]
+    },
+    {
+      "category": "Backend",
+      "items": [
+        {
+          "name": "Node.js",
+          "image": "/imgs/nodejs.png"
+        },
+        {
+          "name": "Express.js",
+          "image": "/imgs/express.png"
+        },
+        {
+          "name": "MongoDb",
+          "image": "/imgs/mongodb.png"
+        },
+        {
+          "name": "Cashfree",
+          "image": "/imgs/cashfree.png"
+        }
+      ]
+    },
+    {
+      "category": "Tools & Platforms",
+      "items": [
+        {
+          "name": "Docker",
+          "image": "/imgs/docker.png"
+        },
+        {
+          "name": "Git",
+          "image": "/imgs/git.png"
+        },
+        {
+          "name": "GitHub",
+          "image": "/imgs/github.png"
+        },
+        {
+          "name": "Vercel",
+          "image": "/imgs/vercel.png"
+        },
+        {
+          "name": "Postman",
+          "image": "/imgs/postman.png"
+        }
+      ]
+    }
+  ]
+}

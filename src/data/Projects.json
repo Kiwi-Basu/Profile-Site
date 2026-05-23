@@ -1,0 +1,86 @@
+{
+  "projects" : [
+    {
+      "name" : "InternHunt 9.0",
+      "image" : "/imgs/internhunt9.png",
+      "description" : "Developed the official internship fair platform for InternWare, IITM Janakpuri, designed to connect students with recruiters and internship opportunities through a modern and responsive web experience.",
+      "tech" : [
+        "React",
+        "TypeScript",
+        "TailwindCSS",
+        "Framer Motion",
+        "Docker",
+        "Node.js",
+        "Express.js",
+        "Cashfree"
+      ],
+      "links" :[
+        {
+          "live" : "https://internhunt.iitminternware.com"
+        }
+      ]
+    },
+    {
+      "name" : "Matrix 3.0",
+      "image" : "/imgs/matrix3.png",
+      "description" : "Developed the official platform for Matrix 3.0, a large-scale tech carnival focused on competitions, innovation, and participant engagement, featuring responsive UI, registration workflows, and payment integration.",
+      "tech" : [
+        "React",
+        "TypeScript",
+        "TailwindCSS",
+        "Framer Motion",
+        "Docker",
+        "Node.js",
+        "Express.js",
+        "Cashfree"
+      ],
+      "links" :[
+        {
+          "live" : "https://matrix.iitminternware.com"
+        }
+      ]
+    },
+    {
+      "name" : "Umung - Fourth Edition",
+      "image" : "/imgs/umung4.png",
+      "description" : "Developed the official platform for उMUNg - Fourth Edition, featuring responsive interfaces, delegate registration workflows, and streamlined event participation experiences for a large-scale Model United Nations conference.",
+      "tech" : [
+        "React",
+        "TypeScript",
+        "TailwindCSS",
+        "Framer Motion",
+        "Docker",
+        "Node.js",
+        "Express.js",
+        "Cashfree"
+      ],
+      "links" :[
+        {
+          "live" : "https://umung.iitminternware.com",
+          "git" : "https://umung.iitminternware.com"
+        }
+      ]
+    },
+    {
+      "name" : "उMUNg - Fourth Edition",
+      "image" : "/imgs/umung4.png",
+      "description" : "Developed the official platform for उMUNg - Fourth Edition, delegate registration workflows, and streamlined event participation experiences for a large-scale Model United Nations conference.",
+      "tech" : [
+        "React",
+        "TypeScript",
+        "TailwindCSS",
+        "Framer Motion",
+        "Docker",
+        "Node.js",
+        "Express.js",
+        "Cashfree"
+      ],
+      "links" :[
+        {
+          "live" : "https://umung.iitminternware.com",
+          "git" : "https://umung.iitminternware.com"
+        }
+      ]
+    }
+  ]
+}

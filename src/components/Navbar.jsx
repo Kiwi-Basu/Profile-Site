@@ -1,45 +1,21 @@
-import React from "react";
-
-const SocialItem = [
-  {
-    name: "GitHub",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
-    link: "https://github.com/kiwi-basu",
-  },
-  {
-    name: "LinkedIn",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg",
-    link: "https://linkedin.com",
-  },
-  {
-    name: "Instagram",
-    icon: "https://cdn.simpleicons.org/instagram/ffffff",
-    link: "https://instagram.com/stupidish_sunish",
-  },
-  {
-    name: "Discord",
-    icon: "https://cdn.simpleicons.org/discord/ffffff",
-    link: "https://discord.com/users/714402409656483840",
-  },
-];
+import React from 'react'
 
 const Navbar = () => {
   return (
-    <div className="flex justify-center bg-[#d54242]  py-2">
-  <div className="pixel-frame flex gap-6">
-    
-    {SocialItem.map((item) => (
-      <a href={item.link} target="_blank" key={item.name}>
-        <div className="pixel-button">
-          <img src={item.icon} className="w-7 h-7" alt={item.name} />
+    <>
+      <section id='Navbar'>
+        <div className='relative flex justify-center '>
+          <div className='fixed z-10 top-2 left-1/2 -translate-x-1/2  px-4 py-2 flex items-center justify-center gap-2 border-1 border-black/20 rounded-xl bg-white/90'>
+            <p className='press-start-font  md:text-3xl lg:text-sm bg-white px-5 py-1 rounded-xl shadow-md cursor-pointer hover:shadow-xl transition-all duration-300 border border-black/10'>Home</p>
+            <p className='press-start-font  md:text-3xl lg:text-sm bg-white px-5 py-1 rounded-xl shadow-md cursor-pointer hover:shadow-xl transition-all duration-300 border border-black/10'>Projects</p>
+          </div>
+          
         </div>
-      </a>
-    ))}
 
-  </div>
-</div>
+      </section>
+    </>
+    
+  )
+}
 
-  );
-};
-
-export default Navbar;
+export default Navbar

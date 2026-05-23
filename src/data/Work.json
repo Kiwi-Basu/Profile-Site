@@ -1,0 +1,48 @@
+{
+  "work" : [
+    {
+      "name" : "Internware | Internship Cell of IITM",
+      "logo" : "/imgs/internware.png",
+      "positions" : [
+        {
+          "title" : "Technical Executive - Web Developer",
+          "start" : "Nov 2025",
+          "end" : "Present",
+          "description" :  [
+            "Developed and maintained 3 event-based web platforms for student registrations and event participation.",
+            "Built responsive and interactive user interfaces using TypeScript, TailwindCSS, and Framer Motion.",
+            "Integrated frontend applications with APIs to handle event registration workflows and payment-related functionality."
+          ]
+        }
+      ]
+    },
+    {
+      "name" : "Nexverse IITM",
+      "logo" : "/imgs/nexverseiitm.png",
+      "positions" : [
+        {
+          "title" : "Web Developer",
+          "start" : "Feb 2025",
+          "end" : "Jul 2025",
+          "description" :  [
+            "Contributed as a Web Developer for Nexverse IITM and collaborated with the team during event and platform development activities." 
+          ]
+        }
+      ]
+    },
+    {
+      "name" : "Geek Room | IITM",
+      "logo" : "/imgs/geekroom.png",
+      "positions" : [
+        {
+          "title" : "Web Developer",
+          "start" : "Oct 2024",
+          "end" : "Jan 2025",
+          "description" :  [
+            "Developed a responsive web platform using HTML, CSS, and JavaScript for a competitive event where participants recreated provided website designs within a timed challenge environment." 
+          ]
+        }
+      ]
+    }
+  ]
+}

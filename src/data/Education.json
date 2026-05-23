@@ -1,0 +1,41 @@
+{
+  "education": [
+    {
+      "name": "Institute of Information Technology and Management",
+      "logo": "/imgs/iitmjanakpuri.png",
+      "positions": [
+        {
+          "title": "Bachelor of Computer Applications",
+          "start": "Aug 2024",
+          "end": "Present",
+          "description": [
+            "Focused on full-stack web development and modern frontend technologies.",
+            "Actively involved in technical communities, event platforms, and web development projects."
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Kerala Sr. Secondary School",
+      "logo": "/imgs/Keralaschool.png",
+      "positions": [
+        {
+          "title": "Higher Secondary Education",
+          "start": "2022",
+          "end": "2024"
+        }
+      ]
+    },
+    {
+      "name": "Kerala Sr. Secondary School",
+      "logo": "/imgs/Keralaschool.png",
+      "positions": [
+        {
+          "title": "Secondary School Education",
+          "start": "2020",
+          "end": "2022"
+        }
+      ]
+    }
+  ]
+}
