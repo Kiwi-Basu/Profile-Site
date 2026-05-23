@@ -41,27 +41,6 @@
       ]
     },
     {
-      "name" : "Umung - Fourth Edition",
-      "image" : "/imgs/umung4.png",
-      "description" : "Developed the official platform for उMUNg - Fourth Edition, featuring responsive interfaces, delegate registration workflows, and streamlined event participation experiences for a large-scale Model United Nations conference.",
-      "tech" : [
-        "React",
-        "TypeScript",
-        "TailwindCSS",
-        "Framer Motion",
-        "Docker",
-        "Node.js",
-        "Express.js",
-        "Cashfree"
-      ],
-      "links" :[
-        {
-          "live" : "https://umung.iitminternware.com",
-          "git" : "https://umung.iitminternware.com"
-        }
-      ]
-    },
-    {
       "name" : "उMUNg - Fourth Edition",
       "image" : "/imgs/umung4.png",
       "description" : "Developed the official platform for उMUNg - Fourth Edition, delegate registration workflows, and streamlined event participation experiences for a large-scale Model United Nations conference.",
@@ -78,7 +57,6 @@
       "links" :[
         {
           "live" : "https://umung.iitminternware.com",
-          "git" : "https://umung.iitminternware.com"
         }
       ]
     }
