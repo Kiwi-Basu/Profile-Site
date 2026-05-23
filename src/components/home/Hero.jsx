@@ -89,7 +89,7 @@ const Hero = () => {
   }
   useEffect(() => {
     updateStatus()
-  },[])
+  })
   
   return (
     <>

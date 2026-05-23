@@ -4,8 +4,6 @@ import { FaLinkedin } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 import { motion } from "motion/react";
 
-
-
 const Contact = () => {
   return (
     <>
