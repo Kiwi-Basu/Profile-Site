@@ -26,7 +26,7 @@ const Skills = () => {
         <div className='px-6 md:px-16 lg:px-50 py-10 overflow-hidden'>
 
           <div className='flex justify-center mb-12 md:mb-20 lg:mb-24'>
-            <p className='press-start-font text-lg md:text-2xl lg:text-3xl font-bold text-shadow-lg text-shadow-[#00000045]'>
+            <p className='press-start-font text-lg md:text-2xl lg:text-3xl font-bold text-shadow-lg text-shadow-[#00000045] dark:text-shadow-[#ffffff45]'>
               Skills
             </p>
           </div>
@@ -44,7 +44,7 @@ const Skills = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6 }}
-                  className='border border-black/10 px-8 py-3 rounded-full shadow-lg bg-white'
+                  className='border border-black/10 dark:border-white/10 px-8 py-3 rounded-full shadow-lg bg-white dark:bg-black'
                 >
                   <p className='press-start-font text-sm'>
                     {category.category}
@@ -72,7 +72,7 @@ const Skills = () => {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ type: "spring", stiffness: 100, delay: index * 0.05 }}
-                        className={`${size} ${rotation} relative border border-black/10 shadow-xl bg-white hover:rotate-0 hover:scale-110 hover:-translate-y-3 transition-all duration-500 cursor-pointer flex flex-col items-center justify-center gap-4`}
+                        className={`${size} ${rotation} relative border border-black/10 dark:border-white/10 shadow shadow-[#11111169] dark:shadow-[#ffffff69]  bg-[#ffffff] dark:bg-[#111111] hover:rotate-0 hover:scale-110 hover:-translate-y-3 transition-all duration-500 cursor-pointer flex flex-col items-center justify-center gap-4`}
                       >
                         <img
                           src={skill.image}

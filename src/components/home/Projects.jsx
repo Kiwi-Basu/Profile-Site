@@ -21,10 +21,10 @@ const Projects = () => {
           >
             <div className="flex gap-3 md:gap-5 items-center">
               <CiStar className="text-3xl md:text-5xl "/>
-              <p className='press-start-font text-lg md:text-2xl lg:text-3xl font-bold text-shadow-lg text-shadow-[#00000045]'>Featured Project</p>
+              <p className='press-start-font text-lg md:text-2xl lg:text-3xl font-bold text-shadow-lg text-shadow-[#00000045] dark:text-shadow-[#ffffff45]'>Featured Project</p>
 
             </div>
-            <p className="text-base md:text-xl lg:text-2xl cursor-pointer underline text-shadow-md hover:text-shadow-lg hover:text-shadow-[#1111115a] transition-all duration-300" onClick={() => {navigate("/projects")}}>view all projects</p>
+            <p className="text-base md:text-xl lg:text-2xl cursor-pointer underline text-shadow-md hover:text-shadow-lg dark:hover:text-shadow-[#ffffff5a] hover:text-shadow-[#1111115a] transition-all duration-300" onClick={() => {navigate("/projects")}}>view all projects</p>
           </motion.div>
 
           <ProjectCard projects={projects.projects?.slice(0,3)}/>

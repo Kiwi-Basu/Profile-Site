@@ -70,9 +70,11 @@ const Cursor = () => {
           pointer-events-none
           z-[9998]
           border
+          dark:border-white/30
           border-black/30
           backdrop-blur-[2px]
           bg-black/5
+          dark:bg-white/5
           transition-transform
           duration-75
         "
@@ -98,7 +100,8 @@ const Cursor = () => {
           rounded-full
           pointer-events-none
           z-[9997]
-          bg-black/5
+          bg-dark/5
+          dark:bg-white/5
           blur-xl
         "
         style={{
@@ -122,6 +125,7 @@ const Cursor = () => {
           h-2.5
           rounded-full
           bg-black
+          dark:bg-white
           pointer-events-none
           z-[9999]
         "

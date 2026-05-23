@@ -55,8 +55,8 @@ const ProjectCard = ({projects = []}) => {
                     transition-all duration-100
                   '
                 >
-                  <div className={`border-2 border-black/20 ${i %2 === 0 ? 'border-r-white/5 border-t-white/5' : 'border-l-white/5 border-t-white/5'}  rounded-3xl p-1 `}>
-                    <img src={project.image} alt={project.name} className='w-full rounded-3xl border border-white/10 shadow-2xl' />
+                  <div className={`border-2 dark:border-white/20 border-black/20 ${i %2 === 0 ? 'border-r-white/5 border-t-white/5 dark:border-r-black/5 dark:border-t-black/5' : 'border-l-white/5 border-t-white/5 dark:border-l-black/5 dark:border-t-black/5'}  rounded-3xl p-1 `}>
+                    <img src={project.image} alt={project.name} className='w-full rounded-3xl border dark:border-black/10 border-white/10 shadow-2xl' />
                   </div>
                 </motion.a>
                 
@@ -68,25 +68,25 @@ const ProjectCard = ({projects = []}) => {
                   className='w-full lg:w-1/2 flex flex-col gap-6 lg:gap-8'
                 >
                   
-                  <div className=' flex flex-col gap-5 border-black/20 rounded-2xl'>
+                  <div className=' flex flex-col gap-5 dark:border-white/20 border-black/20 rounded-2xl'>
                     <p className='text-xl md:text-5xl lg:text-3xl font-medium press-start-font'>{project.name}</p> 
                     <p className='text-sm md:text-2xl lg:text-xl text-justify font-mono'>{project.description}</p>
                     
                     <div className='flex flex-wrap gap-2'>
                       {project.tech.map((stack,i) => (
-                        <p key={i} className='border lg:px-2 lg:py-1 px-5 py-3 rounded-4xl lg:text-sm text-lg border-black/10 shadow cursor-pointer hover:shadow-2xl duration-300 transition-all'>{stack}</p>
+                        <p key={i} className='border lg:px-2 lg:py-1 px-5 py-3 rounded-4xl lg:text-sm text-lg dark:border-white/20 border-black/10 shadow dark:shadow-[#ffffff8d] shadow-[#111111] cursor-pointer hover:shadow-md duration-300 transition-all'>{stack}</p>
                       ))}
 
                     </div>
                   </div>
                   
-                <div className='border p-4 md:p-5 flex flex-col sm:flex-row items-center gap-3 bg-white border-black/20 rounded-2xl'>
+                <div className='border p-4 md:p-5 flex flex-col sm:flex-row items-center gap-3 bg-white dark:bg-black border-black/20 dark:border-white/20 rounded-2xl'>
 
                   {project.links[0]?.live && (
                     <a
                       href={project.links[0].live}
                       target='_blank'
-                      className={`flex items-center justify-center gap-2 border border-black/20 px-5 py-2 rounded-xl shadow hover:shadow-xl hover:-translate-y-1 transition-all duration-300
+                      className={`flex items-center justify-center gap-2 border border-black/20 dark:border-white/20 px-5 py-2 rounded-xl shadow hover:shadow-xl hover:-translate-y-1 transition-all duration-300
                         ${
                           project.links[0]?.live && project.links[0]?.git
                             ? "w-full sm:w-1/2"
@@ -103,7 +103,7 @@ const ProjectCard = ({projects = []}) => {
                     <a
                       href={project.links[0].git}
                       target='_blank'
-                      className={`flex items-center justify-center gap-2 border border-black/20 px-5 py-2 rounded-xl shadow hover:shadow-xl hover:-translate-y-1 transition-all duration-300
+                      className={`flex items-center justify-center gap-2 border border-black/20 dark:border-white/20 px-5 py-2 rounded-xl shadow hover:shadow-xl hover:-translate-y-1 transition-all duration-300
                         ${
                           project.links[0]?.live && project.links[0]?.git
                             ? "w-full sm:w-1/2"

@@ -25,7 +25,7 @@ const Contact = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 1, type: "spring" }}
                 href="https://instagram.com/stupidish_sunish" target="_blank">
-                <div className="flex bg-white items-center justify-center border h-[150px] w-[150px] rounded-2xl shadow-lg border-black/20 cursor-pointer hover:scale-105 transition-all duration-300" >
+                <div className="flex bg-white dark:bg-black items-center justify-center border h-[150px] w-[150px] rounded-2xl shadow-lg dark:shadow-white/10 border-black/20 dark:border-white/20 cursor-pointer hover:scale-105 transition-all duration-300" >
                   <FaInstagram className="text-5xl text-[#ee16d1] " />
                 </div>
               </motion.a>
@@ -35,8 +35,8 @@ const Contact = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 1, type: "spring" }}
                 href="https://github.com/Kiwi-Basu" target="_blank">
-                <div className="flex bg-white items-center justify-center border h-[150px] w-[150px] rounded-2xl shadow-lg border-black/20 cursor-pointer hover:scale-105 transition-all duration-300">
-                  <TbBrandGithubCopilot className="text-5xl text-[#000000] " />
+                <div className="flex bg-white dark:bg-black items-center justify-center border h-[150px] w-[150px] rounded-2xl shadow-lg dark:shadow-white/10 border-black/20 dark:border-white/20 cursor-pointer hover:scale-105 transition-all duration-300">
+                  <TbBrandGithubCopilot className="text-5xl text-[#111111]dark:text-[#ffffff] " />
                 </div>
 
               </motion.a>
@@ -51,7 +51,7 @@ const Contact = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 1, type: "spring" }}
                 href="https://www.linkedin.com/in/sunish-suresh-044926382/" target="_blank">
-                <div className="flex bg-white items-center justify-center border h-[200px] w-[200px] rounded-2xl shadow-lg border-black/20 cursor-pointer hover:scale-105 transition-all duration-300">
+                <div className="flex bg-white dark:bg-black items-center justify-center border h-[200px] w-[200px] rounded-2xl shadow-lg dark:shadow-white/10 border-black/20 dark:border-white/20 cursor-pointer hover:scale-105 transition-all duration-300">
                   <FaLinkedin className="text-5xl text-[#410ae6] " />
                 </div>
               </motion.a>
@@ -62,7 +62,7 @@ const Contact = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 1, type: "spring" }}
                 href="mailto:sunishs9913@gmail.com" target="_blank">
-                <div className="flex bg-white items-center justify-center border h-[100px] w-[200px] rounded-2xl shadow-lg border-black/20 cursor-pointer hover:scale-105 transition-all duration-300">
+                <div className="flex bg-white dark:bg-black items-center justify-center border h-[100px] w-[200px] rounded-2xl shadow-lg dark:shadow-white/10 border-black/20 dark:border-white/20 cursor-pointer hover:scale-105 transition-all duration-300">
                   <SiGmail className="text-5xl text-[#9c1515] " />
                 </div>
               </motion.a>

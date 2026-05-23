@@ -94,7 +94,7 @@ const Hero = () => {
   return (
     <>
       <section id="Hero">
-          <div className='flex flex-col lg:flex-row justify-center lg:justify-between items-center py-30 lg:py-20 px-6 md:px-16 lg:px-50 gap-16 lg:gap-0 press-start-font'>
+          <div className='flex  flex-col lg:flex-row justify-center lg:justify-between items-center py-30 lg:py-20 px-6 md:px-16 lg:px-50 gap-16 lg:gap-0 press-start-font'>
           
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
@@ -104,20 +104,20 @@ const Hero = () => {
           >
 
             <div className='flex flex-col gap-5'>
-              <p className='md:text-4xl lg:text-5xl'>Sunish Suresh</p>
-              <p className='md:text-3xl lg:text-3xl'>Also Known as Kiwi Basu </p>
+              <p className='md:text-4xl lg:text-5xl  '>Sunish Suresh</p>
+              <p className='md:text-3xl lg:text-3xl  '>Also Known as Kiwi Basu </p>
             </div>
 
             <div>
-              <p className='font-mono  md:text-3xl lg:text-xl w-full lg:w-2xl text-justify lg:text-left'>I am a Full Stack Developer and I am currently a student in India. I am passionate about creating software solutions and I am always looking for new challenges. If you have a project that you would like to work on, feel free to contact me.</p>
+              <p className='font-mono  md:text-3xl lg:text-xl w-full lg:w-2xl text-justify lg:text-left  '>I am a Full Stack Developer and I am currently a student in India. I am passionate about creating software solutions and I am always looking for new challenges. If you have a project that you would like to work on, feel free to contact me.</p>
             </div>
 
-            <div className='flex flex-wrap gap-x-4 gap-y-2 md:gap-2 text-4xl lg:text-2xl items-center'>
+            <div className='flex flex-wrap gap-x-4 gap-y-2 md:gap-2 text-4xl lg:text-2xl items-center  '>
               <a href="https://www.linkedin.com/in/sunish-suresh-044926382/" target='_blank' className='group'>
                 <div className='flex items-center gap-3 relative'>
-                  <FaLinkedin className='group-hover:text-white duration-300 transition-all'  />
-                  <p className='text-sm relative group-hover:text-white'>Linkedin
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300" />
+                  <FaLinkedin className='group-hover:text-blue-500 duration-300 transition-all'  />
+                  <p className='text-sm relative group-hover:text-blue-500'>Linkedin
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-black group-hover:w-full transition-all duration-300" />
                   </p>
                 </div>
               </a>
@@ -126,8 +126,8 @@ const Hero = () => {
               
               <a href="https://github.com/Kiwi-Basu" target='_blank' className='group'>
                 <div className='flex items-center gap-3 relative'>
-                  <TbBrandGithubCopilot className='group-hover:text-white duration-300 transition-all'  />
-                  <p className='text-sm relative group-hover:text-white'>Github
+                  <TbBrandGithubCopilot className='group-hover:text-blue-500  duration-300 transition-all'  />
+                  <p className='text-sm relative group-hover:text-blue-500 '>Github
                     <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300" />
                   </p>
                 </div>
@@ -137,9 +137,9 @@ const Hero = () => {
 
               <a href="https://instagram.com/stupidish_sunish" target='_blank' className='group'>
                 <div className='flex items-center gap-3 relative'>
-                  <FaInstagram className='group-hover:text-white duration-300 transition-all'  />
-                  <p className='text-sm relative group-hover:text-white'>Instagram
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300" />
+                  <FaInstagram className='group-hover:text-pink-500 duration-300 transition-all'  />
+                  <p className='text-sm relative group-hover:text-pink-500'>Instagram
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-pink-500 group-hover:w-full transition-all duration-300" />
                   </p>
                 </div>
               </a>
@@ -148,18 +148,18 @@ const Hero = () => {
               
               <a href="mailto:sunishs9913@gmail.com" target='_blank' className='group'>
                 <div className='flex items-center gap-3 relative'>
-                  <SiGmail className='group-hover:text-white duration-300 transition-all'  />
-                  <p className='text-sm relative group-hover:text-white'>Gmail
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300" />
+                  <SiGmail className='group-hover:text-orange-500 duration-300 transition-all'  />
+                  <p className='text-sm relative group-hover:text-orange-500'>Gmail
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300" />
                   </p>
                 </div>
               </a>
 
             </div>
               
-            <div className='flex flex-col sm:flex-row gap-3 sm:gap-5 '>
-              <div className='border w-fit px-4 py-2 rounded-[10px] border-black/30 shadow cursor-pointer hover:translate-0.5 duration-300 transition-all  text-[12px] '>Full Stack Developer</div>
-              <div className='border w-fit px-4 py-2 rounded-[10px] border-black/30 shadow cursor-pointer hover:translate-0.5 duration-300 transition-all  text-[12px] '>Under Graduation (BCA)</div>
+            <div className='flex flex-col sm:flex-row gap-3 sm:gap-5   '>
+              <div className='border w-fit px-4 py-2 rounded-[10px] border-black/30 dark:border-white/30 shadow cursor-pointer hover:translate-0.5 duration-300 transition-all  text-[12px] '>Full Stack Developer</div>
+              <div className='border w-fit px-4 py-2 rounded-[10px] border-black/30 dark:border-white/30 shadow cursor-pointer hover:translate-0.5 duration-300 transition-all  text-[12px] '>Under Graduation (BCA)</div>
             </div>
 
           </motion.div>
@@ -169,16 +169,16 @@ const Hero = () => {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             className='flex flex-col gap-10 w-full sm:w-auto items-center lg:items-start'
           >
-            <div className='border bg-white border-gray-700/30 rounded-xl p-2 flex flex-col gap-3 shadow-lg w-full max-w-[500px] lg:w-[315px]'>
+            <div className='border bg-white dark:bg-black  border-black/30 dark:border-white/30 rounded-xl p-2 flex flex-col gap-3 shadow-lg w-full max-w-[500px] lg:w-[315px]'>
 
-              <div className='border-b  border-gray-700/30 flex justify-between items-center'>
+              <div className='border-b  border-black/30 dark:border-white/30 flex justify-between items-center'>
                 <p className=''>Status {discord_Status_Active?.name}</p>
-                <div className=" w-1 h-1 rounded-full bg-black"></div>
+                <div className=" w-1 h-1 rounded-full bg-black dark:bg-white"></div>
               </div>
               
               <div className='p-2'>
-                <div className='flex shadow-lg p-2 bg-white/20 border-gray-700/30 items-center gap-2 border rounded-2xl'>
-                  <img src={discord_Profile_Picture} alt=""  className='h-20 w-20 border rounded-full'/>
+                <div className='flex shadow-lg p-2 bg-white/20 dark:bg-black/20 border-black/30 dark:border-white/30 items-center gap-2 border rounded-2xl'>
+                  <img src={discord_Profile_Picture} alt=""  className='h-20 w-20  rounded-full'/>
                   <div className='flex flex-col gap-2'>
                     <p>{discord_Username}</p>
                     <p>{discord_Name}</p>
@@ -188,11 +188,11 @@ const Hero = () => {
             </div>
 
 
-            <div className='border bg-white w-full max-w-[500px] lg:w-[315px]  border-gray-700/30 rounded-xl p-2 flex flex-col gap-3 shadow-lg '>
+            <div className='border bg-white dark:bg-black   w-full max-w-[500px] lg:w-[315px] border-black/30  dark:border-white/30 rounded-xl p-2 flex flex-col gap-3 shadow-lg '>
 
-              <div className='border-b border-gray-700/30 flex justify-between items-center'>
+              <div className='border-b border-black/30 dark:border-white/30 flex justify-between items-center'>
                 <p className=''>Spotify</p>
-                <div className=" w-1 h-1 rounded-full bg-black"></div>
+                <div className=" w-1 h-1 rounded-full bg-black dark:bg-white"></div>
               </div>
               
               <div className='p-2'>
@@ -200,7 +200,7 @@ const Hero = () => {
                   (
                     <>
                       <a href={discord_Spotify?.link} target='_blank'>
-                        <div className='shadow-lg flex gap-5 p-2 items-center bg-white/20 border-gray-700/30   border rounded-2xl '>
+                        <div className='shadow-lg flex gap-5 p-2 items-center bg-white/20 dark:bg-black/20 border-black/30 dark:border-white/30   border rounded-2xl '>
                           <img src={discord_Spotify?.image} alt=""  className='h-15 w-15 rounded-2xl'/>
                           <p className='text-[12px]'>{discord_Spotify?.song?.slice(0,20)}</p>
                         </div>
@@ -209,7 +209,7 @@ const Hero = () => {
                     </>
                   ): (
                     <>
-                      <div className='shadow-lg flex gap-5 p-2 items-center bg-white/20 border-gray-700/30   border rounded-2xl '>
+                      <div className='shadow-lg flex gap-5 p-2 items-center bg-white/20 dark:bg-black/20 border-black/30 dark:border-white/30   border rounded-2xl '>
                         <MdOutlineMusicOff className='text-[30px]'/>
                         <p className='text-[12px]'>Currently listening Nothing</p>
                       </div>
@@ -219,20 +219,20 @@ const Hero = () => {
               </div>
             </div>
 
-            <div className='border bg-white w-full max-w-[500px] lg:w-[315px]  border-gray-700/30 rounded-xl p-2 flex flex-col gap-3 shadow-lg '>
+            <div className='border bg-white dark:bg-black   w-full max-w-[500px] lg:w-[315px]  border-black/30 dark:border-white/30 rounded-xl p-2 flex flex-col gap-3 shadow-lg '>
 
-              <div className='border-b border-gray-700/30 flex justify-between items-center'>
+              <div className='border-b border-black/30 dark:border-white/30 flex justify-between items-center'>
                 <p className=''>Activity</p>
-                <div className=" w-1 h-1 rounded-full bg-black"></div>
+                <div className=" w-1 h-1 rounded-full bg-black dark:bg-white"></div>
               </div>
               
               <div className='p-2'>
-                <div className='flex p-2 shadow-lg  bg-white/20 border-gray-700/30 items-center gap-2 border rounded-2xl'>
+                <div className='flex p-2 shadow-lg  bg-white/20 dark:bg-black/20 border-black/30 dark:border-white/30 items-center gap-2 border rounded-2xl'>
                   
                   {discord_Current_Activity ? 
                     (
                       <>
-                        <img src={discord_Current_Activity?.image} alt=""  className='h-20 w-20 rounded-2xl'/>
+                        <img src={discord_Current_Activity?.image} alt=""  className='h-20 w-20 border border-white/10 rounded-2xl'/>
                         <div className='flex flex-col gap-2'>
                           <p className='text-[12px]'>{discord_Current_Activity?.name}</p>
                         </div>

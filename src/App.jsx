@@ -1,7 +1,6 @@
 //"Hello World"(print)
 
-import { lazy, Suspense } from 'react';
-
+import { lazy, Suspense , useEffect, useState} from 'react';
 import {
   Route,
   Routes
@@ -15,11 +14,21 @@ const Home = lazy(() => import('./pages/Home'));
 const AllProject = lazy(() => import('./components/projects/AllProject'));
 
 const App = () => {
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect (() =>{
+    if(darkMode) {
+      document.documentElement.classList.add("dark");
+    }else {
+      document.documentElement.classList.remove("dark")
+    }
+  },[darkMode])
 
   return (
     <>
 
-      <Navbar />
+      <Navbar darkMode={darkMode}
+  setDarkMode={setDarkMode}/>
       <Cursor />
 
       <Suspense

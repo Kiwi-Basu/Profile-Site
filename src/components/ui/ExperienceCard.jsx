@@ -6,9 +6,9 @@ const ExperienceCard = ({ data = [] }) => {
     <>
       <section id='Experience-Card'>
 
-          <div className="border w-3xl  lg:w-2xl rounded-2xl bg-white border-black/20">
+          <div className="border w-3xl  lg:w-2xl rounded-2xl bg-white dark:bg-black border-black/20  dark:border-white/20">
 
-            <div className="ml-6 md:ml-10 border-l-4 border-black/20">
+            <div className="ml-6 md:ml-10 border-l-4 border-black/20 dark:border-white/20">
 
               {data.map((w, i) => {
 
@@ -40,7 +40,7 @@ const ExperienceCard = ({ data = [] }) => {
                     <img
                       src={w.logo}
                       alt={w.name}
-                      className="h-10 w-10 md:h-12 md:w-12 rounded-full bg-black/20 absolute z-10 -left-5 md:-left-6 top-4 md:top-6 border border-black/30 shadow-lg"
+                      className="h-10 w-10 md:h-12 md:w-12 rounded-full bg-black/20 dark:bg-white/20 absolute z-10 -left-5 md:-left-6 top-4 md:top-6 border border-white/30 dark:border-black/30 shadow-lg"
                     />
 
                     <div className="ml-8 md:ml-10 pr-4 md:pr-5">

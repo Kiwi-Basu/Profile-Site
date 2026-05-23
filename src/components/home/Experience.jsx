@@ -19,10 +19,10 @@ const Experience = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className='relative flex gap-[10px] md:gap-5 border bg-white border-black/20 lg:w-2xl w-3xl p-[6px] md:p-2 rounded-[10px]'
+            className='relative flex gap-[10px] md:gap-5 border bg-white dark:bg-black border-black/30 dark:border-white/30 lg:w-2xl w-3xl p-[6px] md:p-2 rounded-[10px]'
           >
 
-            <div className={`absolute top-1.5 md:top-2 h-[44px]  w-[calc(50%-11px)] md:w-[calc(50%-18px)] rounded-[10px] bg-black transition-all duration-300
+            <div className={`absolute top-1.5 md:top-2 h-[44px]  w-[calc(50%-11px)] md:w-[calc(50%-18px)] rounded-[10px] bg-black dark:bg-white transition-all duration-300
               ${activeTab === "work"
                 ? "left-[6px] md:left-2"
                 : "left-[calc(50%+5px)] md:left-[calc(50%+10px)]"
@@ -30,11 +30,11 @@ const Experience = () => {
             />
 
             <button onClick={() => setActiveTab("work")}
-              className={`w-1/2 relative border-black/20 border press-start-font z-10 py-2 text-xs md:text-sm lg:text-base rounded-[10px] transition-all duration-300 cursor-pointer hover:shadow-lg shadow-xl
+              className={`w-1/2 relative border-white/20 border press-start-font z-10 py-2 text-xs md:text-sm lg:text-base rounded-[10px] transition-all duration-300 cursor-pointer hover:shadow-lg shadow-xl
               ${activeTab === "work" 
-                  ? "text-white"
-                  : "text-black"
-                }`}
+                ? "dark:text-black text-white"
+                : "dark:text-white text-black"
+              }`}
             >
               Work
             </button>
@@ -42,10 +42,10 @@ const Experience = () => {
 
             <button
               onClick={() => setActiveTab("education")}
-              className={`w-1/2 relative border press-start-font border-black/20 z-10 py-2 text-xs md:text-sm lg:text-base rounded-[10px] transition-all duration-300 cursor-pointer hover:shadow-lg shadow-xl
+              className={`w-1/2 relative border press-start-font border-black/30 dark:border-white/30 z-10 py-2 text-xs md:text-sm lg:text-base rounded-[10px] transition-all duration-300 cursor-pointer hover:shadow-lg shadow-xl
               ${activeTab === "education"
-                  ? "text-white"
-                  : "text-black"
+                ? "dark:text-black text-white"
+                  : "dark:text-white text-black"
                 }`}
             >
               Education

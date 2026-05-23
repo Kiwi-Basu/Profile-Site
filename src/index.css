@@ -1,10 +1,31 @@
 /* "Hello World"(print) */
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
 
 body {
+
+  background-color: white;
+  color: black;
+
   background-image:
     radial-gradient(
-      rgba(43, 8, 8, 0.249) 1px,
+      rgba(0, 0, 0, 0.379) 1px,
+      transparent 1px
+    );
+
+  background-size: 24px 24px;
+}
+
+.dark body {
+
+  background-color: black;
+  color: white;
+  
+
+  background-image:
+    radial-gradient(
+      rgba(255, 255, 255, 0.175) 1px,
       transparent 1px
     );
 
