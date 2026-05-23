@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaGhost } from "react-icons/fa";
 import { MdOutlineMusicOff } from "react-icons/md";
 import { FaInstagram } from "react-icons/fa6";
 import { TbBrandGithubCopilot } from "react-icons/tb";
 import { FaLinkedin } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
+import { motion } from "motion/react";
 
 
 
 const Hero = () => {
+  
   const [discord_Profile_Picture , setDiscord_Profile_Picture] = useState() //pfp
   const [discord_Name, setDiscord_Name] = useState() //kiwi_hu_mai
   const [discord_Username, setDiscord_Username] = useState() //kiwi basu
@@ -85,26 +87,32 @@ const Hero = () => {
 
 
   }
-
-  updateStatus()
+  useEffect(() => {
+    updateStatus()
+  },[])
   
   return (
     <>
       <section id="Hero">
-          <div className='flex flex-col lg:flex-row justify-center lg:justify-between items-center py-40 lg:py-20 px-6 md:px-16 lg:px-50 gap-16 lg:gap-0 press-start-font'>
+          <div className='flex flex-col lg:flex-row justify-center lg:justify-between items-center py-30 lg:py-20 px-6 md:px-16 lg:px-50 gap-16 lg:gap-0 press-start-font'>
           
-          <div className='flex flex-col gap-10 w-full lg:w-auto'>
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className='flex flex-col gap-10 w-full lg:w-auto'
+          >
 
             <div className='flex flex-col gap-5'>
-              <p className=' md:text-6xl lg:text-5xl'>Sunish Suresh</p>
-              <p className='text-lg md:text-3xl lg:text-3xl'>Also Known as Kiwi Basu </p>
+              <p className='md:text-4xl lg:text-5xl'>Sunish Suresh</p>
+              <p className='md:text-3xl lg:text-3xl'>Also Known as Kiwi Basu </p>
             </div>
 
             <div>
-              <p className='font-mono text-base md:text-4xl lg:text-xl w-full lg:w-2xl text-justify lg:text-left'>I am a Full Stack Developer and I am currently a student in India. I am passionate about creating software solutions and I am always looking for new challenges. If you have a project that you would like to work on, feel free to contact me.</p>
+              <p className='font-mono  md:text-3xl lg:text-xl w-full lg:w-2xl text-justify lg:text-left'>I am a Full Stack Developer and I am currently a student in India. I am passionate about creating software solutions and I am always looking for new challenges. If you have a project that you would like to work on, feel free to contact me.</p>
             </div>
 
-            <div className='flex flex-wrap gap-x-4 gap-y-2 md:gap-2 text-lg lg:text-2xl md:text-5xl  items-center'>
+            <div className='flex flex-wrap gap-x-4 gap-y-2 md:gap-2 text-4xl lg:text-2xl items-center'>
               <a href="https://www.linkedin.com/in/sunish-suresh-044926382/" target='_blank' className='group'>
                 <div className='flex items-center gap-3 relative'>
                   <FaLinkedin className='group-hover:text-white duration-300 transition-all'  />
@@ -150,15 +158,20 @@ const Hero = () => {
             </div>
               
             <div className='flex flex-col sm:flex-row gap-3 sm:gap-5 '>
-              <div className='border w-fit lg:px-4 lg:py-2 px-10 py-3  rounded-[10px] border-black/30 shadow cursor-pointer hover:translate-0.5 duration-300 transition-all text-[15px]  lg:text-[12px] '>Full Stack Developer</div>
-              <div className='border w-fit lg:px-4 lg:py-2 px-10 py-3  rounded-[10px] border-black/30 shadow cursor-pointer hover:translate-0.5 duration-300 transition-all text-[15px]  lg:text-[12px] '>Under Graduation (BCA)</div>
+              <div className='border w-fit px-4 py-2 rounded-[10px] border-black/30 shadow cursor-pointer hover:translate-0.5 duration-300 transition-all  text-[12px] '>Full Stack Developer</div>
+              <div className='border w-fit px-4 py-2 rounded-[10px] border-black/30 shadow cursor-pointer hover:translate-0.5 duration-300 transition-all  text-[12px] '>Under Graduation (BCA)</div>
             </div>
 
-          </div>
-          <div className='flex flex-col gap-10 w-full sm:w-auto items-center lg:items-start'>
-            <div className='border border-gray-700/30 rounded-xl p-2 flex flex-col gap-3 shadow-lg w-full max-w-[315px] sm:w-[315px]'>
+          </motion.div>
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            className='flex flex-col gap-10 w-full sm:w-auto items-center lg:items-start'
+          >
+            <div className='border bg-white border-gray-700/30 rounded-xl p-2 flex flex-col gap-3 shadow-lg w-full max-w-[500px] lg:w-[315px]'>
 
-              <div className='border-b border-gray-700/30 flex justify-between items-center'>
+              <div className='border-b  border-gray-700/30 flex justify-between items-center'>
                 <p className=''>Status {discord_Status_Active?.name}</p>
                 <div className=" w-1 h-1 rounded-full bg-black"></div>
               </div>
@@ -175,7 +188,7 @@ const Hero = () => {
             </div>
 
 
-            <div className='border w-full max-w-[315px] sm:w-[315px]  border-gray-700/30 rounded-xl p-2 flex flex-col gap-3 shadow-lg '>
+            <div className='border bg-white w-full max-w-[500px] lg:w-[315px]  border-gray-700/30 rounded-xl p-2 flex flex-col gap-3 shadow-lg '>
 
               <div className='border-b border-gray-700/30 flex justify-between items-center'>
                 <p className=''>Spotify</p>
@@ -206,7 +219,7 @@ const Hero = () => {
               </div>
             </div>
 
-            <div className='border w-full max-w-[315px] sm:w-[315px]  border-gray-700/30 rounded-xl p-2 flex flex-col gap-3 shadow-lg '>
+            <div className='border bg-white w-full max-w-[500px] lg:w-[315px]  border-gray-700/30 rounded-xl p-2 flex flex-col gap-3 shadow-lg '>
 
               <div className='border-b border-gray-700/30 flex justify-between items-center'>
                 <p className=''>Activity</p>
@@ -242,7 +255,7 @@ const Hero = () => {
             </div>
 
 
-          </div>
+          </motion.div>
 
         </div>
         
