@@ -3,42 +3,59 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=0">
-  <title>Document</title>
+  <link rel="icon" type="image/svg" href="./imgs/kiwi.png">
+  <title>sunish Suresh (Kiwi Basu) - Part Time Coder</title>
 </head>
-<body class="">
+<body>
   <div id="root"></div>
-   <script>
-      let text = "@kiwibasu";
-      let index = 0;
-      let deleting = false;
+  <script>
+    const titles = [
+      "Kiwi Basu",
+      "@kiwibasu",
+      "stupidish_sunish"
+    ];
 
-      function updateTitle() {
-        if (!deleting && index <= text.length) {
-          document.title = text.slice(0, index++);
-        } else if (deleting && index >= 0) {
-          document.title = text.slice(0, index--);
-        }
+    let titleIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
 
-        if (index > text.length) {
-          deleting = true;
-          setTimeout(updateTitle, 500); // pause before deleting
-          return;
-        }
+    function animateTitle() {
+      const current = titles[titleIndex];
 
-        if (index < 0) {
-          deleting = false;
-          index = 0;
-          setTimeout(updateTitle, 500); // pause before typing again
-          return;
-        }
-
-        setTimeout(updateTitle, 150); // typing speed
+      if (!deleting) {
+        document.title = current.slice(0, charIndex++);
+      } else {
+        document.title = current.slice(0, charIndex--);
       }
 
-      updateTitle();
+      if (!deleting && charIndex > current.length) {
+        deleting = true;
+        setTimeout(animateTitle, 2000);
+        return;
+      }
 
-    </script>
-    <script type="module" src="/src/main.jsx"></script>
+      if (deleting && charIndex < 0) {
+        deleting = false;
+        titleIndex = (titleIndex + 1) % titles.length;
+        charIndex = 0;
+        setTimeout(animateTitle, 500);
+        return;
+      }
+
+      setTimeout(animateTitle, deleting ? 75 : 150);
+    }
+
+    // Show Kiwi Basu immediately after refresh
+    document.title = "Kiwi Basu";
+
+    // Start animation after 2 seconds
+    setTimeout(() => {
+      animateTitle();
+    }, 100);
+
+
+  </script>
+  <script type="module" src="/src/main.jsx"></script>
 </body>
 </html>
 
