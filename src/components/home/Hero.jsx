@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { FaGhost } from "react-icons/fa";
+import { FaGhost , FaUser , FaLinkedin } from "react-icons/fa";
 import { MdOutlineMusicOff } from "react-icons/md";
 import { FaInstagram } from "react-icons/fa6";
 import { TbBrandGithubCopilot } from "react-icons/tb";
-import { FaLinkedin } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 import { motion } from "motion/react";
-
+import { IoLogoGameControllerB } from "react-icons/io";
 
 
 const Hero = () => {
@@ -89,6 +88,9 @@ const Hero = () => {
   }
   useEffect(() => {
     updateStatus()
+    const interval = setInterval(updateStatus, 15000); // refresh every 15s
+
+    return () => clearInterval(interval);
   })
   
   return (
@@ -178,7 +180,11 @@ const Hero = () => {
               
               <div className='p-2'>
                 <div className='flex shadow-lg p-2 bg-white/20 dark:bg-black/20 border-black/30 dark:border-white/30 items-center gap-2 border rounded-2xl'>
-                  <img src={discord_Profile_Picture} alt=""  className='h-20 w-20  rounded-full'/>
+                  {discord_Profile_Picture ? (<img src={discord_Profile_Picture} alt=""  className='h-20 w-20  rounded-full'/>) :(
+                    <div className='h-20 w-20  rounded-full'>
+                      <FaUser />
+                    </div>
+                  ) } 
                   <div className='flex flex-col gap-2'>
                     <p>{discord_Username}</p>
                     <p>{discord_Name}</p>
@@ -231,7 +237,13 @@ const Hero = () => {
                   {discord_Current_Activity ? 
                     (
                       <>
-                        <img src={discord_Current_Activity?.image} alt=""  className='h-20 w-20 border border-white/10 rounded-2xl'/>
+                        { discord_Current_Activity?.image ? (
+                          <img src={discord_Current_Activity.image} alt="" className="h-20 w-20 border border-white/10 rounded-2xl"/>
+                        ) : ( 
+                          <div className="h-20 w-20 border border-white/10 rounded-2xl flex items-center justify-center">
+                            <IoLogoGameControllerB className="text-4xl" />
+                          </div> 
+                        )}
                         <div className='flex flex-col gap-2'>
                           <p className='text-[12px]'>{discord_Current_Activity?.name}</p>
                         </div>
