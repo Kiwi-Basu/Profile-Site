@@ -128,7 +128,7 @@ const Hero = () => {
                 <div className='flex items-center gap-3 relative'>
                   <TbBrandGithubCopilot className='group-hover:text-blue-500  duration-300 transition-all'  />
                   <p className='text-sm relative group-hover:text-blue-500 '>Github
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300" />
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-500 group-hover:w-full transition-all duration-300" />
                   </p>
                 </div>
               </a>
@@ -228,7 +228,6 @@ const Hero = () => {
               
               <div className='p-2'>
                 <div className='flex p-2 shadow-lg  bg-white/20 dark:bg-black/20 border-black/30 dark:border-white/30 items-center gap-2 border rounded-2xl'>
-                  
                   {discord_Current_Activity ? 
                     (
                       <>
@@ -246,19 +245,13 @@ const Hero = () => {
                         </div>
                       </>
                     )
-                  }
-
-                  
-
+                  }                  
                 </div>
               </div>
+              
             </div>
-
-
           </motion.div>
-
-        </div>
-        
+        </div>      
       </section>
     </>
   )
