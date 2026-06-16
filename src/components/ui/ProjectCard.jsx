@@ -74,7 +74,7 @@ const ProjectCard = ({projects = []}) => {
                     
                     <div className='flex flex-wrap gap-2'>
                       {project.tech.map((stack,i) => (
-                        <p key={i} className='border lg:px-2 lg:py-1 px-5 py-3 rounded-4xl lg:text-sm text-lg dark:border-white/20 border-black/10 shadow dark:shadow-[#ffffff8d] shadow-[#111111] cursor-pointer hover:shadow-md duration-300 transition-all'>{stack}</p>
+                        <p key={i} className='border lg:px-2 lg:py-1 px-5 py-3 rounded-4xl lg:text-sm text-lg dark:border-white/20 border-black/10 shadow dark:shadow-[#ffffffad] shadow-[#11111164] cursor-pointer hover:shadow-md duration-300 transition-all'>{stack}</p>
                       ))}
 
                     </div>

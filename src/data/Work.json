@@ -1,6 +1,20 @@
 {
   "work" : [
     {
+      "name" : "Devlofox Technologies",
+      "logo" : "/imgs/devlofox.png",
+      "positions" : [
+        {
+          "title" : "Intern - Web Developer",
+          "start" : "Jun 2026",
+          "end" : "Present",
+          "description" :  [
+            "Newly Joined will update soon "
+          ]
+        }
+      ]
+    },
+    {
       "name" : "Internware | Internship Cell of IITM",
       "logo" : "/imgs/internware.png",
       "positions" : [

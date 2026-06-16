@@ -21,6 +21,23 @@
       ]
     },
     {
+      "name" : "Kiwi Pomodoro",
+      "image" : "/imgs/kiwipomodoro.png",
+      "description" : "Developed a modern Pomodoro productivity application featuring a relaxing lo-fi atmosphere, helping users stay focused during study sessions while enjoying music and structured break intervals.",
+      "tech" : [
+        "React",
+        "Javascript",
+        "TailwindCSS",
+        "Framer Motion"
+      ],
+      "links" :[
+        {
+          "live" : "https://kiwipomodoro.vercel.app/",
+          "git" : "https://github.com/Kiwi-Basu/lofi  "
+        }
+      ]
+    },
+    {
       "name" : "Matrix 3.0",
       "image" : "/imgs/matrix3.png",
       "description" : "Developed the official platform for Matrix 3.0, a large-scale tech carnival focused on competitions, innovation, and participant engagement, featuring responsive UI, registration workflows, and payment integration.",
